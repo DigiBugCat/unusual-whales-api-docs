@@ -31,6 +31,16 @@ This repository contains comprehensive documentation for all Unusual Whales API 
 
 ---
 
+## ⚠️ Security Notice
+
+**This documentation does not contain any API keys or credentials.**
+
+All example code uses placeholder `YOUR_API_KEY` - you must replace this with your own API key from [Unusual Whales](https://unusualwhales.com).
+
+Never commit API keys to version control. Use environment variables or secure credential management.
+
+---
+
 ## Base URL
 
 ```
