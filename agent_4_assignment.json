@@ -1,0 +1,146 @@
+{
+  "name": "Agent 4: Screening & Analysis",
+  "categories": [
+    "politician-portfolios",
+    "screener",
+    "seasonality",
+    "shorts"
+  ],
+  "endpoints": [
+    {
+      "category": "politician-portfolios",
+      "path": "/api/politician-portfolios/holders/{ticker}",
+      "method": "GET",
+      "summary": "Politician Portfolio Holders by Ticker",
+      "description": "Returns all politician portfolio owner names, ID, and holdings for the specified ticker.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+      "operationId": "PublicApi.PoliticianPortfoliosController.holds_ticker",
+      "parameters": 2
+    },
+    {
+      "category": "politician-portfolios",
+      "path": "/api/politician-portfolios/people",
+      "method": "GET",
+      "summary": "Politicians List",
+      "description": "Returns all politician names and IDs.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+      "operationId": "PublicApi.PoliticianPortfoliosController.people",
+      "parameters": 0
+    },
+    {
+      "category": "politician-portfolios",
+      "path": "/api/politician-portfolios/{politician_id}",
+      "method": "GET",
+      "summary": "Politician Portfolios",
+      "description": "Returns all portfolios and holdings for a politician.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+      "operationId": "PublicApi.PoliticianPortfoliosController.portfolios",
+      "parameters": 2
+    },
+    {
+      "category": "screener",
+      "path": "/api/screener/analysts",
+      "method": "GET",
+      "summary": "Analyst Rating",
+      "description": "Returns the latest analyst rating for the given ticker.",
+      "operationId": "PublicApi.ScreenerController.analyst_ratings",
+      "parameters": 4
+    },
+    {
+      "category": "screener",
+      "path": "/api/screener/option-contracts",
+      "method": "GET",
+      "summary": "Hottest Chains",
+      "description": "A contract screener endpoint to screen the market for contracts by a variety of filter options.\n\nFor an example of what can be build with this endpoint check out the [Hottest Contracts](https://unusua",
+      "operationId": "PublicApi.ScreenerController.contract_screener",
+      "parameters": 91
+    },
+    {
+      "category": "screener",
+      "path": "/api/screener/stocks",
+      "method": "GET",
+      "summary": "Stock Screener",
+      "description": "A stock screener endpoint to screen the market for stocks by a variety of filter options.\n\nFor an example of what can be build with this endpoint check out the [Stock Screener](https://unusualwhales.c",
+      "operationId": "PublicApi.ScreenerController.stock_screener",
+      "parameters": 66
+    },
+    {
+      "category": "seasonality",
+      "path": "/api/seasonality/market",
+      "method": "GET",
+      "summary": "Market Seasonality",
+      "description": "Returns the average return by month for the tickers SPY, QQQ, IWM, XLE, XLC, XLK, XLV, XLP, XLY, XLRE, XLF, XLI, XLB .",
+      "operationId": "PublicApi.SeasonalityController.market_seasonality",
+      "parameters": 0
+    },
+    {
+      "category": "seasonality",
+      "path": "/api/seasonality/{month}/performers",
+      "method": "GET",
+      "summary": "Month Performers",
+      "description": "Returns the tickers with the highest performance in terms of price change in the month over the years.\nPer default the result is ordered by 'positive_months_perc' descending, then 'median_change' desc",
+      "operationId": "PublicApi.SeasonalityController.month_performers",
+      "parameters": 8
+    },
+    {
+      "category": "seasonality",
+      "path": "/api/seasonality/{ticker}/monthly",
+      "method": "GET",
+      "summary": "Average return per month",
+      "description": "Returns the average return by month for the given ticker.",
+      "operationId": "PublicApi.SeasonalityController.monthly",
+      "parameters": 1
+    },
+    {
+      "category": "seasonality",
+      "path": "/api/seasonality/{ticker}/year-month",
+      "method": "GET",
+      "summary": "Price change per month per year",
+      "description": "Returns the relative price change for all past months over multiple years.",
+      "operationId": "PublicApi.SeasonalityController.year_month",
+      "parameters": 1
+    },
+    {
+      "category": "shorts",
+      "path": "/api/shorts/{ticker}/data",
+      "method": "GET",
+      "summary": "Short Data",
+      "description": "Returns short data including rebate rate and short shares available for a ticker.",
+      "operationId": "PublicApi.ShortController.short_data",
+      "parameters": 1
+    },
+    {
+      "category": "shorts",
+      "path": "/api/shorts/{ticker}/ftds",
+      "method": "GET",
+      "summary": "Failures to Deliver",
+      "description": "Returns the short failures to deliver per day for the given ticker starting from the given date.\nIf no date is given, returns the data for the current/last market day.",
+      "operationId": "PublicApi.ShortController.failures_to_deliver",
+      "parameters": 1
+    },
+    {
+      "category": "shorts",
+      "path": "/api/shorts/{ticker}/interest-float",
+      "method": "GET",
+      "summary": "Short Interest and Float",
+      "description": "Returns short interest and float data for percentage calculations for a ticker.\nThis endpoint provides information about the percentage of float that is shorted,\nthe float size, and the days to cover ",
+      "operationId": "PublicApi.ShortController.short_interest_and_float",
+      "parameters": 1
+    },
+    {
+      "category": "shorts",
+      "path": "/api/shorts/{ticker}/volume-and-ratio",
+      "method": "GET",
+      "summary": "Short Volume and Ratio",
+      "description": "Returns short volume and short ratio data for a ticker.",
+      "operationId": "PublicApi.ShortController.short_volume_and_ratio",
+      "parameters": 1
+    },
+    {
+      "category": "shorts",
+      "path": "/api/shorts/{ticker}/volumes-by-exchange",
+      "method": "GET",
+      "summary": "Short Volume By Exchange",
+      "description": "Returns short volume data broken down by exchange for a ticker.",
+      "operationId": "PublicApi.ShortController.short_volume_by_exchange",
+      "parameters": 1
+    }
+  ]
+}

@@ -1,0 +1,2445 @@
+{
+  "total": 109,
+  "categories": {
+    "alerts": [
+      {
+        "path": "/api/alerts",
+        "method": "GET",
+        "summary": "Alerts",
+        "description": "Returns all the alerts that have been triggered for the user.\n\nTime filtering is available using the `newer_than` and `older_than` parameters:\n- The maximum lookback period is 14 days\n- If no time ran",
+        "operationId": "PublicApi.AlertsController.alerts",
+        "tags": [
+          "alerts"
+        ],
+        "parameters": 7
+      },
+      {
+        "path": "/api/alerts/configuration",
+        "method": "GET",
+        "summary": "Alert configurations",
+        "description": "Returnst all alert configurations of the user.\n\nUsers can create alerts for:\n- Market tide\n- Gamma exposure (GEX), Vanna exposure (VEX), Charm exposure (CEX)\n- Interval Contract screeners (replicates ",
+        "operationId": "PublicApi.AlertsController.configs",
+        "tags": [
+          "alerts"
+        ],
+        "parameters": 0
+      }
+    ],
+    "congress": [
+      {
+        "path": "/api/congress/congress-trader",
+        "method": "GET",
+        "summary": "Recent Reports By Trader",
+        "description": "Returns the recent reports by the given congress member.",
+        "operationId": "PublicApi.CongressController.congress_trader",
+        "tags": [
+          "congress"
+        ],
+        "parameters": 4
+      },
+      {
+        "path": "/api/congress/late-reports",
+        "method": "GET",
+        "summary": "Recent Late Reports",
+        "description": "Returns the recent late reports by congress members.\nIf a date is given, will only return recent late reports, which's report date is <= the given input date.",
+        "operationId": "PublicApi.CongressController.congress_late_reports",
+        "tags": [
+          "congress"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/congress/recent-trades",
+        "method": "GET",
+        "summary": "Recent Congress Trades",
+        "description": "Returns the latest transacted trades by congress members.\nIf a date is given, will only return reports, which's transaction date is <= the given input date.",
+        "operationId": "PublicApi.CongressController.congress_recent_trades",
+        "tags": [
+          "congress"
+        ],
+        "parameters": 3
+      }
+    ],
+    "darkpool": [
+      {
+        "path": "/api/darkpool/recent",
+        "method": "GET",
+        "summary": "Recent Darkpool Trades",
+        "description": "Returns the latest darkpool trades.",
+        "operationId": "PublicApi.DarkpoolController.darkpool_recent",
+        "tags": [
+          "darkpool"
+        ],
+        "parameters": 8
+      },
+      {
+        "path": "/api/darkpool/{ticker}",
+        "method": "GET",
+        "summary": "Ticker Darkpool Trades",
+        "description": "Returns the darkpool trades for the given ticker on a given day.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+        "operationId": "PublicApi.DarkpoolController.darkpool_ticker",
+        "tags": [
+          "darkpool"
+        ],
+        "parameters": 11
+      }
+    ],
+    "earnings": [
+      {
+        "path": "/api/earnings/afterhours",
+        "method": "GET",
+        "summary": "Afterhours",
+        "description": "Returns the afterhours earnings for a given date.",
+        "operationId": "PublicApi.EarningsController.afterhours",
+        "tags": [
+          "earnings"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/earnings/premarket",
+        "method": "GET",
+        "summary": "Premarket",
+        "description": "Returns the premarket earnings for a given date.",
+        "operationId": "PublicApi.EarningsController.premarket",
+        "tags": [
+          "earnings"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/earnings/{ticker}",
+        "method": "GET",
+        "summary": "Historical Ticker Earnings",
+        "description": "Returns the historical earnings for the given ticker.",
+        "operationId": "PublicApi.EarningsController.ticker",
+        "tags": [
+          "earnings"
+        ],
+        "parameters": 1
+      }
+    ],
+    "etfs": [
+      {
+        "path": "/api/etfs/{ticker}/exposure",
+        "method": "GET",
+        "summary": "Exposure",
+        "description": "Returns all ETFs in which the given ticker is a holding",
+        "operationId": "PublicApi.EtfController.exposure",
+        "tags": [
+          "etfs"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/etfs/{ticker}/holdings",
+        "method": "GET",
+        "summary": "Holdings",
+        "description": "Returns the holdings of the ETF",
+        "operationId": "PublicApi.EtfController.holdings",
+        "tags": [
+          "etfs"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/etfs/{ticker}/in-outflow",
+        "method": "GET",
+        "summary": "Inflow & Outflow",
+        "description": "Returns an ETF's inflow and outflow",
+        "operationId": "PublicApi.EtfController.in_outflow",
+        "tags": [
+          "etfs"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/etfs/{ticker}/info",
+        "method": "GET",
+        "summary": "Information",
+        "description": "Returns the information about the given ETF ticker.",
+        "operationId": "PublicApi.EtfController.info",
+        "tags": [
+          "etfs"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/etfs/{ticker}/weights",
+        "method": "GET",
+        "summary": "Sector & Country weights",
+        "description": "Returns the sector & country weights for the given ETF ticker.",
+        "operationId": "PublicApi.EtfController.weights",
+        "tags": [
+          "etfs"
+        ],
+        "parameters": 1
+      }
+    ],
+    "group-flow": [
+      {
+        "path": "/api/group-flow/{flow_group}/greek-flow",
+        "method": "GET",
+        "summary": "Greek flow",
+        "description": "Returns the group flow's greek flow (delta & vega flow) for the given market day broken down per minute.\nDate must be the current or a past date. If no date is given, returns data for the current/last",
+        "operationId": "PublicApi.GroupFlowController.greek_flow",
+        "tags": [
+          "group_flow"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/group-flow/{flow_group}/greek-flow/{expiry}",
+        "method": "GET",
+        "summary": "Greek flow by expiry",
+        "description": "Returns the group flow's greek flow (delta & vega flow) for the given market day broken down per minute & expiry.\nDate must be the current or a past date. If no date is given, returns data for the cur",
+        "operationId": "PublicApi.GroupFlowController.greek_flow_expiry",
+        "tags": [
+          "group_flow"
+        ],
+        "parameters": 3
+      }
+    ],
+    "insider": [
+      {
+        "path": "/api/insider/transactions",
+        "method": "GET",
+        "summary": "Transactions",
+        "description": "Returns the latest insider transactions.\n\nBy default all transacations that have been filled by the same person on the same day with the same trade code are aggregated into a single row.\nEach of those",
+        "operationId": "PublicApi.InsiderController.transactions",
+        "tags": [
+          "insiders"
+        ],
+        "parameters": 24
+      },
+      {
+        "path": "/api/insider/{sector}/sector-flow",
+        "method": "GET",
+        "summary": "Sector Flow",
+        "description": "Returns an aggregated view of the insider flow for the given sector.\n\nThis can be used to quickly examine the buy & sell insider flow for a given trading date",
+        "operationId": "PublicApi.InsiderController.sector_flow",
+        "tags": [
+          "insiders"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/insider/{ticker}",
+        "method": "GET",
+        "summary": "Insiders",
+        "description": "Returns all insiders for the given ticker",
+        "operationId": "PublicApi.InsiderController.insiders",
+        "tags": [
+          "insiders"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/insider/{ticker}/ticker-flow",
+        "method": "GET",
+        "summary": "Ticker Flow",
+        "description": "Returns an aggregated view of the insider flow for the given ticker.\n\nThis can be used to quickly examine the buy & sell insider flow for a given trading date",
+        "operationId": "PublicApi.InsiderController.ticker_flow",
+        "tags": [
+          "insiders"
+        ],
+        "parameters": 1
+      }
+    ],
+    "institution": [
+      {
+        "path": "/api/institution/{name}/activity",
+        "method": "GET",
+        "summary": "Institutional Activity",
+        "description": "The trading activities for a given institution.",
+        "operationId": "PublicApi.InstitutionController.activity",
+        "tags": [
+          "institution"
+        ],
+        "parameters": 4
+      },
+      {
+        "path": "/api/institution/{name}/holdings",
+        "method": "GET",
+        "summary": "Institutional Holdings",
+        "description": "Returns the holdings for a given institution.",
+        "operationId": "PublicApi.InstitutionController.holdings",
+        "tags": [
+          "institution"
+        ],
+        "parameters": 9
+      },
+      {
+        "path": "/api/institution/{name}/sectors",
+        "method": "GET",
+        "summary": "Sector Exposure",
+        "description": "The sector exposure for a given institution.",
+        "operationId": "PublicApi.InstitutionController.sectors",
+        "tags": [
+          "institution"
+        ],
+        "parameters": 4
+      },
+      {
+        "path": "/api/institution/{ticker}/ownership",
+        "method": "GET",
+        "summary": "Institutional Ownership",
+        "description": "The institutional ownership of a given ticker.",
+        "operationId": "PublicApi.InstitutionController.ownership",
+        "tags": [
+          "institution"
+        ],
+        "parameters": 9
+      }
+    ],
+    "institutions": [
+      {
+        "path": "/api/institutions",
+        "method": "GET",
+        "summary": "List of Institutions",
+        "description": "Returns a list of institutions.",
+        "operationId": "PublicApi.InstitutionController.list",
+        "tags": [
+          "institution"
+        ],
+        "parameters": 10
+      },
+      {
+        "path": "/api/institutions/latest_filings",
+        "method": "GET",
+        "summary": "Latest Filings",
+        "description": "The latest institutional filings.",
+        "operationId": "PublicApi.InstitutionController.latest_filings",
+        "tags": [
+          "institution"
+        ],
+        "parameters": 6
+      }
+    ],
+    "market": [
+      {
+        "path": "/api/market/correlations",
+        "method": "GET",
+        "summary": "Correlations",
+        "description": "Returns the correlations between a list of tickers.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.\n\nYou can filter the time period either b",
+        "operationId": "PublicApi.MarketController.correlations",
+        "tags": [
+          "market"
+        ],
+        "parameters": 4
+      },
+      {
+        "path": "/api/market/economic-calendar",
+        "method": "GET",
+        "summary": "Economic calendar",
+        "description": "Returns the economic calendar.",
+        "operationId": "PublicApi.MarketController.events",
+        "tags": [
+          "market"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/market/fda-calendar",
+        "method": "GET",
+        "summary": "FDA Calendar",
+        "description": "Returns FDA calendar data with filtering options.\n\nThe FDA calendar contains information about:\n- PDUFA (Prescription Drug User Fee Act) dates\n- Advisory Committee Meetings\n- FDA Decisions\n- Clinical ",
+        "operationId": "PublicApi.MarketController.fda_calendar",
+        "tags": [
+          "market"
+        ],
+        "parameters": 7
+      },
+      {
+        "path": "/api/market/insider-buy-sells",
+        "method": "GET",
+        "summary": "Total Insider Buy & Sells",
+        "description": "Returns the total amount of purchases & sells as well as notional values for insider transactions\nacross the market",
+        "operationId": "PublicApi.MarketController.insider_buy_sells",
+        "tags": [
+          "market"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/market/market-tide",
+        "method": "GET",
+        "summary": "Market Tide",
+        "description": "Market Tide is a proprietary tool that can be viewed from the Market Overview page. The Market Tide chart provides real time data based on a proprietary formula that examines market wide options activ",
+        "operationId": "PublicApi.MarketController.market_tide",
+        "tags": [
+          "market"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/market/oi-change",
+        "method": "GET",
+        "summary": "OI Change",
+        "description": "Returns the non-Index/non-ETF contracts and OI change data with the highest OI change (default: descending).\nDate must be the current or a past date. If no date is given, returns data for the current/",
+        "operationId": "PublicApi.MarketController.oi_change",
+        "tags": [
+          "market"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/market/sector-etfs",
+        "method": "GET",
+        "summary": "Sector Etfs",
+        "description": "Returns the current trading days statistics for the SPDR sector etfs\n\n----\nThis can be used to build a market overview such as:\n\n![sectors etf](https://i.imgur.com/yQ5o6rR.png)",
+        "operationId": "PublicApi.MarketController.sector_etfs",
+        "tags": [
+          "market"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/market/spike",
+        "method": "GET",
+        "summary": "SPIKE",
+        "description": "Returns the SPIKE values for the given date.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+        "operationId": "PublicApi.MarketController.spike",
+        "tags": [
+          "market"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/market/top-net-impact",
+        "method": "GET",
+        "summary": "Top Net Impact",
+        "description": "Returns the top tickers by net premium (half bullish, half bearish). Defaults to last market day.",
+        "operationId": "PublicApi.MarketController.top_net_impact",
+        "tags": [
+          "market"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/market/total-options-volume",
+        "method": "GET",
+        "summary": "Total Options Volume",
+        "description": "Returns the total options volume and premium for all trade executions\nthat happened on a given trading date.\n\n----\nThis can be used to build a market options overview such as:\n\n![Market State](https:/",
+        "operationId": "PublicApi.MarketController.total_options_volume",
+        "tags": [
+          "market"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/market/{sector}/sector-tide",
+        "method": "GET",
+        "summary": "Sector Tide",
+        "description": "The Sector tide is similar to the Market Tide. While the market tide is based on options activity of the whole market\nthe sector tide is only based on the options activity of companies which are in th",
+        "operationId": "PublicApi.MarketController.sec_indst",
+        "tags": [
+          "market"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/market/{ticker}/etf-tide",
+        "method": "GET",
+        "summary": "ETF Tide",
+        "description": "The ETF tide is similar to the Market Tide. While the market tide is based on options activity of the whole market\nthe ETF tide is only based on the options activity of the holdings of the specified E",
+        "operationId": "PublicApi.MarketController.etf_tide",
+        "tags": [
+          "market"
+        ],
+        "parameters": 2
+      }
+    ],
+    "net-flow": [
+      {
+        "path": "/api/net-flow/expiry",
+        "method": "GET",
+        "summary": "Net Flow Expiry",
+        "description": "Returns net premium flow by `tide_type` category, `moneyness` category, and `expiration` category, allowing you to create chart variations like [https://unusualwhales.com/zero-dte](https://unusualwhal",
+        "operationId": "PublicApi.NetFlowController.expiry",
+        "tags": [
+          "market"
+        ],
+        "parameters": 4
+      }
+    ],
+    "news": [
+      {
+        "path": "/api/news/headlines",
+        "method": "GET",
+        "summary": "News Headlines",
+        "description": "Returns the latest news headlines for financial markets.\n\nThis endpoint provides access to news headlines that may impact the markets, including company-specific\nnews, sector news, and market-wide eve",
+        "operationId": "PublicApi.NewsController.headlines",
+        "tags": [
+          "news"
+        ],
+        "parameters": 5
+      }
+    ],
+    "option-contract": [
+      {
+        "path": "/api/option-contract/{id}/flow",
+        "method": "GET",
+        "summary": "Flow Data",
+        "description": "Returns the last 50 option trades for the given option chain. Optionally a min premium and a side can be supplied in the query for further filtering.\nIf no date is specified data for the last trading ",
+        "operationId": "PublicApi.OptionContractController.flow",
+        "tags": [
+          "option-contract"
+        ],
+        "parameters": 5
+      },
+      {
+        "path": "/api/option-contract/{id}/historic",
+        "method": "GET",
+        "summary": "Historic Data",
+        "description": "Returns for every trading day historic data for the given option contract",
+        "operationId": "PublicApi.OptionContractController.history",
+        "tags": [
+          "option-contract"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/option-contract/{id}/intraday",
+        "method": "GET",
+        "summary": "Intraday Data",
+        "description": "Returns 1 minute interval intraday data for the given option contract.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+        "operationId": "PublicApi.OptionContractController.intraday",
+        "tags": [
+          "option-contract"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/option-contract/{id}/volume-profile",
+        "method": "GET",
+        "summary": "Volume Profile",
+        "description": "Returns the volume profile (volume - sweep, floor, cross, ask, bid, etc. - per fill price) for an option symbol on a given trading day.\nDate must be the current or a past date. If no date is given, re",
+        "operationId": "PublicApi.OptionContractController.volume_profile",
+        "tags": [
+          "option-contract"
+        ],
+        "parameters": 2
+      }
+    ],
+    "option-trades": [
+      {
+        "path": "/api/option-trades/flow-alerts",
+        "method": "GET",
+        "summary": "Flow Alerts",
+        "description": "Returns the latest flow alerts.",
+        "operationId": "PublicApi.OptionTradeController.flow_alerts",
+        "tags": [
+          "option-trade"
+        ],
+        "parameters": 28
+      },
+      {
+        "path": "/api/option-trades/full-tape/{date}",
+        "method": "GET",
+        "summary": "Full Tape",
+        "description": "Download all option transactions (the \"full tape\") for a given trading date.\n\nNOTICE: Access to this endpoint is only included in the Advanced API subscription.\n\nThe last 3 trading days are available ",
+        "operationId": "PublicApi.OptionTradeController.full_tape",
+        "tags": [
+          "option-trade"
+        ],
+        "parameters": 1
+      }
+    ],
+    "politician-portfolios": [
+      {
+        "path": "/api/politician-portfolios/holders/{ticker}",
+        "method": "GET",
+        "summary": "Politician Portfolio Holders by Ticker",
+        "description": "Returns all politician portfolio owner names, ID, and holdings for the specified ticker.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+        "operationId": "PublicApi.PoliticianPortfoliosController.holds_ticker",
+        "tags": [
+          "politician_portfolios"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/politician-portfolios/people",
+        "method": "GET",
+        "summary": "Politicians List",
+        "description": "Returns all politician names and IDs.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+        "operationId": "PublicApi.PoliticianPortfoliosController.people",
+        "tags": [
+          "politician_portfolios"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/politician-portfolios/{politician_id}",
+        "method": "GET",
+        "summary": "Politician Portfolios",
+        "description": "Returns all portfolios and holdings for a politician.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+        "operationId": "PublicApi.PoliticianPortfoliosController.portfolios",
+        "tags": [
+          "politician_portfolios"
+        ],
+        "parameters": 2
+      }
+    ],
+    "screener": [
+      {
+        "path": "/api/screener/analysts",
+        "method": "GET",
+        "summary": "Analyst Rating",
+        "description": "Returns the latest analyst rating for the given ticker.",
+        "operationId": "PublicApi.ScreenerController.analyst_ratings",
+        "tags": [
+          "screener"
+        ],
+        "parameters": 4
+      },
+      {
+        "path": "/api/screener/option-contracts",
+        "method": "GET",
+        "summary": "Hottest Chains",
+        "description": "A contract screener endpoint to screen the market for contracts by a variety of filter options.\n\nFor an example of what can be build with this endpoint check out the [Hottest Contracts](https://unusua",
+        "operationId": "PublicApi.ScreenerController.contract_screener",
+        "tags": [
+          "screener"
+        ],
+        "parameters": 91
+      },
+      {
+        "path": "/api/screener/stocks",
+        "method": "GET",
+        "summary": "Stock Screener",
+        "description": "A stock screener endpoint to screen the market for stocks by a variety of filter options.\n\nFor an example of what can be build with this endpoint check out the [Stock Screener](https://unusualwhales.c",
+        "operationId": "PublicApi.ScreenerController.stock_screener",
+        "tags": [
+          "screener"
+        ],
+        "parameters": 66
+      }
+    ],
+    "seasonality": [
+      {
+        "path": "/api/seasonality/market",
+        "method": "GET",
+        "summary": "Market Seasonality",
+        "description": "Returns the average return by month for the tickers SPY, QQQ, IWM, XLE, XLC, XLK, XLV, XLP, XLY, XLRE, XLF, XLI, XLB .",
+        "operationId": "PublicApi.SeasonalityController.market_seasonality",
+        "tags": [
+          "seasonality"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/seasonality/{month}/performers",
+        "method": "GET",
+        "summary": "Month Performers",
+        "description": "Returns the tickers with the highest performance in terms of price change in the month over the years.\nPer default the result is ordered by 'positive_months_perc' descending, then 'median_change' desc",
+        "operationId": "PublicApi.SeasonalityController.month_performers",
+        "tags": [
+          "seasonality"
+        ],
+        "parameters": 8
+      },
+      {
+        "path": "/api/seasonality/{ticker}/monthly",
+        "method": "GET",
+        "summary": "Average return per month",
+        "description": "Returns the average return by month for the given ticker.",
+        "operationId": "PublicApi.SeasonalityController.monthly",
+        "tags": [
+          "seasonality"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/seasonality/{ticker}/year-month",
+        "method": "GET",
+        "summary": "Price change per month per year",
+        "description": "Returns the relative price change for all past months over multiple years.",
+        "operationId": "PublicApi.SeasonalityController.year_month",
+        "tags": [
+          "seasonality"
+        ],
+        "parameters": 1
+      }
+    ],
+    "shorts": [
+      {
+        "path": "/api/shorts/{ticker}/data",
+        "method": "GET",
+        "summary": "Short Data",
+        "description": "Returns short data including rebate rate and short shares available for a ticker.",
+        "operationId": "PublicApi.ShortController.short_data",
+        "tags": [
+          "short"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/shorts/{ticker}/ftds",
+        "method": "GET",
+        "summary": "Failures to Deliver",
+        "description": "Returns the short failures to deliver per day for the given ticker starting from the given date.\nIf no date is given, returns the data for the current/last market day.",
+        "operationId": "PublicApi.ShortController.failures_to_deliver",
+        "tags": [
+          "short"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/shorts/{ticker}/interest-float",
+        "method": "GET",
+        "summary": "Short Interest and Float",
+        "description": "Returns short interest and float data for percentage calculations for a ticker.\nThis endpoint provides information about the percentage of float that is shorted,\nthe float size, and the days to cover ",
+        "operationId": "PublicApi.ShortController.short_interest_and_float",
+        "tags": [
+          "short"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/shorts/{ticker}/volume-and-ratio",
+        "method": "GET",
+        "summary": "Short Volume and Ratio",
+        "description": "Returns short volume and short ratio data for a ticker.",
+        "operationId": "PublicApi.ShortController.short_volume_and_ratio",
+        "tags": [
+          "short"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/shorts/{ticker}/volumes-by-exchange",
+        "method": "GET",
+        "summary": "Short Volume By Exchange",
+        "description": "Returns short volume data broken down by exchange for a ticker.",
+        "operationId": "PublicApi.ShortController.short_volume_by_exchange",
+        "tags": [
+          "short"
+        ],
+        "parameters": 1
+      }
+    ],
+    "socket": [
+      {
+        "path": "/api/socket",
+        "method": "GET",
+        "summary": "WebSocket channels",
+        "description": "Returns the available WebSocket channels for connections.\n\n## Websocket Guide\n#You can find fully-functional examples that stream data from many channels here:\n\n- Python: [https://github.com/unusual-w",
+        "operationId": "PublicApi.SocketController.channels",
+        "tags": [
+          "websocket"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/socket/flow_alerts",
+        "method": "GET",
+        "summary": "Flow alerts",
+        "description": "**NOTE:**\nThis is the documentation for websocket channel `flow-alerts`.\nWebsocket access for personal use is only available through the [Advanced plan](https://unusualwhales.com/pricing?product=api).",
+        "operationId": "PublicApi.SocketController.flow_alerts",
+        "tags": [
+          "websocket"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/socket/gex",
+        "method": "GET",
+        "summary": "GEX",
+        "description": "**NOTE:**\nThis is the documentation for websocket channels `gex:<TICKER>`, `gex_strike:<TICKER>`, and `gex_strike_expiry:<TICKER>`.\nWebsocket access for personal use is only available through the[Adva",
+        "operationId": "PublicApi.SocketController.gex",
+        "tags": [
+          "websocket"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/socket/news",
+        "method": "GET",
+        "summary": "News",
+        "description": "**NOTE:**\nThis is the documentation for websocket channel `news`.\nWebsocket access for personal use is only available through the [Advanced plan](https://unusualwhales.com/pricing?product=api).\n\nYou c",
+        "operationId": "PublicApi.SocketController.news",
+        "tags": [
+          "websocket"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/socket/option_trades",
+        "method": "GET",
+        "summary": "Option trades",
+        "description": "**NOTE:**\nThis is the documentation for websocket channels `option_trades` and `option_trades:<TICKER>`.\nWebsocket access for personal use is only available through the [Advanced plan](https://unusual",
+        "operationId": "PublicApi.SocketController.option_trades",
+        "tags": [
+          "websocket"
+        ],
+        "parameters": 0
+      },
+      {
+        "path": "/api/socket/price",
+        "method": "GET",
+        "summary": "Price",
+        "description": "**NOTE:**\nThis is the documentation for websocket channel `price:<TICKER>`.\nWebsocket access for personal use is only available through the[Advanced plan](https://unusualwhales.com/pricing?product=api",
+        "operationId": "PublicApi.SocketController.price",
+        "tags": [
+          "websocket"
+        ],
+        "parameters": 0
+      }
+    ],
+    "stock": [
+      {
+        "path": "/api/stock/{sector}/tickers",
+        "method": "GET",
+        "summary": "Companies in Sector",
+        "description": "Returns a list of tickers which are in the given sector.",
+        "operationId": "PublicApi.TickerController.companies_in_sector",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/stock/{ticker}/atm-chains",
+        "method": "GET",
+        "summary": "ATM Chains",
+        "description": "Returns the ATM chains for the given expirations",
+        "operationId": "PublicApi.TickerController.atm_chains",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/expiry-breakdown",
+        "method": "GET",
+        "summary": "Expiry Breakdown",
+        "description": "Returns all expirations for the given trading day for a ticker.",
+        "operationId": "PublicApi.OptionContractController.expiry_breakdown",
+        "tags": [
+          "option-contract"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/flow-alerts",
+        "method": "GET",
+        "summary": "Flow Alerts",
+        "description": "This endpoint has been deprecated and will be removed.\nPlease migrate to this Flow Alerts endpoint, which provides a more detailed response: [https://api.unusualwhales.com/docs#/operations/PublicApi.O",
+        "operationId": "PublicApi.TickerController.flow_alerts",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 4
+      },
+      {
+        "path": "/api/stock/{ticker}/flow-per-expiry",
+        "method": "GET",
+        "summary": "Flow per expiry",
+        "description": "Returns the option flow per expiry for the last trading day",
+        "operationId": "PublicApi.TickerController.flow_per_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/stock/{ticker}/flow-per-strike",
+        "method": "GET",
+        "summary": "Flow per strike",
+        "description": "Returns the option flow per strike for a given trading day.",
+        "operationId": "PublicApi.TickerController.flow_per_strike",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/flow-per-strike-intraday",
+        "method": "GET",
+        "summary": "Flow per strike intraday",
+        "description": "Returns the options flow for a given date in one minute intervals (the one minute intervals are not aggregated with each other).",
+        "operationId": "PublicApi.TickerController.flow_per_strike_intraday",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/flow-recent",
+        "method": "GET",
+        "summary": "Recent flows",
+        "description": "Returns the latest flows for the given ticker. Optionally a min premium and a side can be supplied in the query for further filtering.",
+        "operationId": "PublicApi.TickerController.flow_recent",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/greek-exposure",
+        "method": "GET",
+        "summary": "Greek Exposure",
+        "description": "Greek Exposure is the assumed greek exposure that market makers are exposed to.\n\nThe most popular greek exposure is gamma exposure (GEX).\n\nInvestors and large funds lower risk and protect their money ",
+        "operationId": "PublicApi.TickerController.greek_exposure",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/greek-exposure/expiry",
+        "method": "GET",
+        "summary": "Greek Exposure By Expiry",
+        "description": "The greek exposure of a ticker grouped by expiry dates across all contracts on a given market date.",
+        "operationId": "PublicApi.TickerController.greek_exposure_by_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/greek-exposure/strike",
+        "method": "GET",
+        "summary": "Greek Exposure By Strike",
+        "description": "The greek exposure of a ticker grouped by strike price across all contracts on a given market date.",
+        "operationId": "PublicApi.TickerController.greek_exposure_by_strike",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/greek-exposure/strike-expiry",
+        "method": "GET",
+        "summary": "Greek Exposure By Strike And Expiry",
+        "description": "The greek exposure of a ticker grouped by strike price for a specific expiry date.",
+        "operationId": "PublicApi.TickerController.greek_exposure_by_strike_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/greek-flow",
+        "method": "GET",
+        "summary": "Greek flow",
+        "description": "Returns the tickers greek flow (delta & vega flow) for the given market day broken down per minute.\nDate must be the current or a past date. If no date is given, returns data for the current/last mark",
+        "operationId": "PublicApi.TickerController.greek_flow",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/greek-flow/{expiry}",
+        "method": "GET",
+        "summary": "Greek flow by expiry",
+        "description": "Returns the tickers greek flow (delta & vega flow) for the given market day broken down per minute & expiry.\nDate must be the current or a past date. If no date is given, returns data for the current/",
+        "operationId": "PublicApi.TickerController.greek_flow_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/greeks",
+        "method": "GET",
+        "summary": "Greeks",
+        "description": "Returns the greeks for each strike for a single expiry date.",
+        "operationId": "PublicApi.TickerController.greeks",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/historical-risk-reversal-skew",
+        "method": "GET",
+        "summary": "Historical Risk Reversal Skew",
+        "description": "Returns the historical risk reversal skew (the difference between put and call volatility) at a delta of 25 or 10 (colloquial for 0.25 or 0.1) for a given expiry date.",
+        "operationId": "PublicApi.TickerController.historical_risk_reversal_skew",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 5
+      },
+      {
+        "path": "/api/stock/{ticker}/info",
+        "method": "GET",
+        "summary": "Information",
+        "description": "Returns a information about the given ticker.",
+        "operationId": "PublicApi.TickerController.info",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/stock/{ticker}/insider-buy-sells",
+        "method": "GET",
+        "summary": "Insider buy & sells",
+        "description": "Returns the total amount of purchases & sells as well as notional values for insider transactions\nfor the given ticker",
+        "operationId": "PublicApi.TickerController.insider_buy_sell",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/stock/{ticker}/interpolated-iv",
+        "method": "GET",
+        "summary": "Interpolated IV",
+        "description": "Returns the Interpolated IV for a given trading day. If there is no expiration then the data is calcualted via linear interpolation\nwith the next 2 closest expirations\n\nDate must be the current or a p",
+        "operationId": "PublicApi.TickerController.interpolated_iv",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/iv-rank",
+        "method": "GET",
+        "summary": "IV Rank",
+        "description": "Returns the IV rank data for a ticker over a period of time.\nIV rank is a measure of where current implied volatility stands relative to its historical range.",
+        "operationId": "PublicApi.TickerController.iv_rank",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/max-pain",
+        "method": "GET",
+        "summary": "Max Pain",
+        "description": "Returns the max pain for all expirations for the given ticker for the last 120 days",
+        "operationId": "PublicApi.TickerController.max_pain",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/net-prem-ticks",
+        "method": "GET",
+        "summary": "Call/Put Net/Vol Ticks",
+        "description": "Returns the net premium ticks for a given ticker which can be used to build the following chart:\n![Net Prem chart](https://i.imgur.com/Rom1kcB.png)\n\n----\nEach tick is resembling the data for a single ",
+        "operationId": "PublicApi.TickerController.net_prem_ticks",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/nope",
+        "method": "GET",
+        "summary": "Nope",
+        "description": "Returns the tickers NOPE for the given market day broken down per minute.\n\nNOPE is the Net Options Pricing Effect, which tracks the intraday net delta of any ticker, but most research has been done on",
+        "operationId": "PublicApi.TickerController.nope",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/ohlc/{candle_size}",
+        "method": "GET",
+        "summary": "OHLC",
+        "description": "Returns the Open High Low Close (OHLC) candle data for a given ticker.\n\nResults are limited to 2,500 elements even if there are more available.\n\nNote: If you select 1d as a candle_size then the candle",
+        "operationId": "PublicApi.TickerController.ohlc",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 6
+      },
+      {
+        "path": "/api/stock/{ticker}/oi-change",
+        "method": "GET",
+        "summary": "OI Change",
+        "description": "Returns the tickers contracts' OI change data ordered by absolute OI change (default: descending).\nDate must be the current or a past date. If no date is given, returns data for the current/last marke",
+        "operationId": "PublicApi.TickerController.oi_change",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 5
+      },
+      {
+        "path": "/api/stock/{ticker}/oi-per-expiry",
+        "method": "GET",
+        "summary": "OI per Expiry",
+        "description": "Returns the total open interest for calls and puts for a specific expiry date.",
+        "operationId": "PublicApi.TickerController.oi_per_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/oi-per-strike",
+        "method": "GET",
+        "summary": "OI per Strike",
+        "description": "Returns the total open interest for calls and puts for a specific strike.",
+        "operationId": "PublicApi.TickerController.oi_per_strike",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/option-chains",
+        "method": "GET",
+        "summary": "Option Chains",
+        "description": "Returns all option symbols for the given ticker that were present at the given day.\n\nIf no date is given, returns data for the current/last market day.\n\nYou can use the following regex to extract unde",
+        "operationId": "PublicApi.TickerController.option_chains",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/option-contracts",
+        "method": "GET",
+        "summary": "Option contracts",
+        "description": "Returns all option contracts for the given ticker",
+        "operationId": "PublicApi.OptionContractController.option_contracts",
+        "tags": [
+          "option-contract"
+        ],
+        "parameters": 11
+      },
+      {
+        "path": "/api/stock/{ticker}/option/stock-price-levels",
+        "method": "GET",
+        "summary": "Option Price Levels",
+        "description": "Returns the call and put volume per price level for the given ticker.\n\n----\nCan be used to build a chart such as following:\n![Option Price Level chart](https://i.imgur.com/y6BZ4sG.png)",
+        "operationId": "PublicApi.TickerController.option_price_level",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/option/volume-oi-expiry",
+        "method": "GET",
+        "summary": "Volume & OI per Expiry",
+        "description": "Returns the total volume and open interest per expiry for the given ticker.",
+        "operationId": "PublicApi.TickerController.vol_oi_per_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/options-volume",
+        "method": "GET",
+        "summary": "Options Volume",
+        "description": "Returns the options volume & premium for all trade executions\nthat happened on a given trading date for the given ticker.\n\n----\nThis can be used to build a ticker options overview such as:\n\n![Table](h",
+        "operationId": "PublicApi.TickerController.options_volume",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/spot-exposures",
+        "method": "GET",
+        "summary": "Spot GEX exposures per 1min",
+        "description": "Returns the spot GEX exposures for the given ticker per minute.\n\nSpot GEX is the assumed $ value of the given greek (ie. gamma) exposure that market makers need to hedge per 1% change of the underlyin",
+        "operationId": "PublicApi.TickerController.spot_exposures_one_minute",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/spot-exposures/expiry-strike",
+        "method": "GET",
+        "summary": "Spot GEX exposures by strike & expiry",
+        "description": "Returns the most recent spot GEX exposures across all strikes for the given ticker & expiration on a given date. Calculated either with open interest or with volume.\n\nData is available since 2025-01-1",
+        "operationId": "PublicApi.TickerController.spot_exposures_by_strike_expiry_v2",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 9
+      },
+      {
+        "path": "/api/stock/{ticker}/spot-exposures/strike",
+        "method": "GET",
+        "summary": "Spot GEX exposures by strike",
+        "description": "Returns the most recent spot GEX exposures across all strikes for the given ticker on a given date. Calculated either with open interest or with volume.\n\nSpot GEX is the assumed $ value of the given g",
+        "operationId": "PublicApi.TickerController.spot_exposures_by_strike",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 6
+      },
+      {
+        "path": "/api/stock/{ticker}/spot-exposures/{expiry}/strike",
+        "method": "GET",
+        "summary": "Spot GEX exposures by strike & expiry (Deprecated)",
+        "description": "This endpoint has been deprecated and will be removed, please migrate to the new [endpoint](https://api.unusualwhales.com/docs#/operations/PublicApi.TickerController.spot_exposures_by_strike_expiry_v2",
+        "operationId": "PublicApi.TickerController.spot_exposures_by_strike_expiry",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 5
+      },
+      {
+        "path": "/api/stock/{ticker}/stock-state",
+        "method": "GET",
+        "summary": "Stock State",
+        "description": "Returns the last stock state for the given ticker.\n\nThis is the easiest way to retreive the open, close, high, low and volume of the last trading day.",
+        "operationId": "PublicApi.TickerController.last_stock_state",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 1
+      },
+      {
+        "path": "/api/stock/{ticker}/stock-volume-price-levels",
+        "method": "GET",
+        "summary": "Off/Lit Price Levels",
+        "description": "Returns the lit & off lit stock volume per price level for the given ticker.\n\n----\nImportant: The volume does **NOT** represent the full market dialy volume. It\nonly represents the volume of executed ",
+        "operationId": "PublicApi.TickerController.stock_volume_price_level",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/volatility/realized",
+        "method": "GET",
+        "summary": "Realized Volatility",
+        "description": "The implied and realized volatility of a given ticker. The implied volatility is the expected 30 day forward looking volatility.\n\nThe realized/historical volatility is the volatility of the stock pric",
+        "operationId": "PublicApi.TickerController.realized_volatility",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 3
+      },
+      {
+        "path": "/api/stock/{ticker}/volatility/stats",
+        "method": "GET",
+        "summary": "Volatility Statistics",
+        "description": "Returns comprehensive volatility statistics for a ticker on a specific date, including\nimplied volatility data, realized volatility data, and their respective high/low values\nfor the past year.",
+        "operationId": "PublicApi.TickerController.volatility_stats",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      },
+      {
+        "path": "/api/stock/{ticker}/volatility/term-structure",
+        "method": "GET",
+        "summary": "Implied Volatility Term Structure",
+        "description": "The average of the latest volatilities for the at the money call and put contracts for every expiry date.",
+        "operationId": "PublicApi.TickerController.implied_volatility_term_structure",
+        "tags": [
+          "stock"
+        ],
+        "parameters": 2
+      }
+    ]
+  },
+  "all_endpoints": [
+    {
+      "path": "/api/alerts",
+      "method": "GET",
+      "summary": "Alerts",
+      "description": "Returns all the alerts that have been triggered for the user.\n\nTime filtering is available using the `newer_than` and `older_than` parameters:\n- The maximum lookback period is 14 days\n- If no time ran",
+      "operationId": "PublicApi.AlertsController.alerts",
+      "tags": [
+        "alerts"
+      ],
+      "parameters": 7
+    },
+    {
+      "path": "/api/alerts/configuration",
+      "method": "GET",
+      "summary": "Alert configurations",
+      "description": "Returnst all alert configurations of the user.\n\nUsers can create alerts for:\n- Market tide\n- Gamma exposure (GEX), Vanna exposure (VEX), Charm exposure (CEX)\n- Interval Contract screeners (replicates ",
+      "operationId": "PublicApi.AlertsController.configs",
+      "tags": [
+        "alerts"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/congress/congress-trader",
+      "method": "GET",
+      "summary": "Recent Reports By Trader",
+      "description": "Returns the recent reports by the given congress member.",
+      "operationId": "PublicApi.CongressController.congress_trader",
+      "tags": [
+        "congress"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/congress/late-reports",
+      "method": "GET",
+      "summary": "Recent Late Reports",
+      "description": "Returns the recent late reports by congress members.\nIf a date is given, will only return recent late reports, which's report date is <= the given input date.",
+      "operationId": "PublicApi.CongressController.congress_late_reports",
+      "tags": [
+        "congress"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/congress/recent-trades",
+      "method": "GET",
+      "summary": "Recent Congress Trades",
+      "description": "Returns the latest transacted trades by congress members.\nIf a date is given, will only return reports, which's transaction date is <= the given input date.",
+      "operationId": "PublicApi.CongressController.congress_recent_trades",
+      "tags": [
+        "congress"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/darkpool/recent",
+      "method": "GET",
+      "summary": "Recent Darkpool Trades",
+      "description": "Returns the latest darkpool trades.",
+      "operationId": "PublicApi.DarkpoolController.darkpool_recent",
+      "tags": [
+        "darkpool"
+      ],
+      "parameters": 8
+    },
+    {
+      "path": "/api/darkpool/{ticker}",
+      "method": "GET",
+      "summary": "Ticker Darkpool Trades",
+      "description": "Returns the darkpool trades for the given ticker on a given day.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+      "operationId": "PublicApi.DarkpoolController.darkpool_ticker",
+      "tags": [
+        "darkpool"
+      ],
+      "parameters": 11
+    },
+    {
+      "path": "/api/earnings/afterhours",
+      "method": "GET",
+      "summary": "Afterhours",
+      "description": "Returns the afterhours earnings for a given date.",
+      "operationId": "PublicApi.EarningsController.afterhours",
+      "tags": [
+        "earnings"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/earnings/premarket",
+      "method": "GET",
+      "summary": "Premarket",
+      "description": "Returns the premarket earnings for a given date.",
+      "operationId": "PublicApi.EarningsController.premarket",
+      "tags": [
+        "earnings"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/earnings/{ticker}",
+      "method": "GET",
+      "summary": "Historical Ticker Earnings",
+      "description": "Returns the historical earnings for the given ticker.",
+      "operationId": "PublicApi.EarningsController.ticker",
+      "tags": [
+        "earnings"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/etfs/{ticker}/exposure",
+      "method": "GET",
+      "summary": "Exposure",
+      "description": "Returns all ETFs in which the given ticker is a holding",
+      "operationId": "PublicApi.EtfController.exposure",
+      "tags": [
+        "etfs"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/etfs/{ticker}/holdings",
+      "method": "GET",
+      "summary": "Holdings",
+      "description": "Returns the holdings of the ETF",
+      "operationId": "PublicApi.EtfController.holdings",
+      "tags": [
+        "etfs"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/etfs/{ticker}/in-outflow",
+      "method": "GET",
+      "summary": "Inflow & Outflow",
+      "description": "Returns an ETF's inflow and outflow",
+      "operationId": "PublicApi.EtfController.in_outflow",
+      "tags": [
+        "etfs"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/etfs/{ticker}/info",
+      "method": "GET",
+      "summary": "Information",
+      "description": "Returns the information about the given ETF ticker.",
+      "operationId": "PublicApi.EtfController.info",
+      "tags": [
+        "etfs"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/etfs/{ticker}/weights",
+      "method": "GET",
+      "summary": "Sector & Country weights",
+      "description": "Returns the sector & country weights for the given ETF ticker.",
+      "operationId": "PublicApi.EtfController.weights",
+      "tags": [
+        "etfs"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/group-flow/{flow_group}/greek-flow",
+      "method": "GET",
+      "summary": "Greek flow",
+      "description": "Returns the group flow's greek flow (delta & vega flow) for the given market day broken down per minute.\nDate must be the current or a past date. If no date is given, returns data for the current/last",
+      "operationId": "PublicApi.GroupFlowController.greek_flow",
+      "tags": [
+        "group_flow"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/group-flow/{flow_group}/greek-flow/{expiry}",
+      "method": "GET",
+      "summary": "Greek flow by expiry",
+      "description": "Returns the group flow's greek flow (delta & vega flow) for the given market day broken down per minute & expiry.\nDate must be the current or a past date. If no date is given, returns data for the cur",
+      "operationId": "PublicApi.GroupFlowController.greek_flow_expiry",
+      "tags": [
+        "group_flow"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/insider/transactions",
+      "method": "GET",
+      "summary": "Transactions",
+      "description": "Returns the latest insider transactions.\n\nBy default all transacations that have been filled by the same person on the same day with the same trade code are aggregated into a single row.\nEach of those",
+      "operationId": "PublicApi.InsiderController.transactions",
+      "tags": [
+        "insiders"
+      ],
+      "parameters": 24
+    },
+    {
+      "path": "/api/insider/{sector}/sector-flow",
+      "method": "GET",
+      "summary": "Sector Flow",
+      "description": "Returns an aggregated view of the insider flow for the given sector.\n\nThis can be used to quickly examine the buy & sell insider flow for a given trading date",
+      "operationId": "PublicApi.InsiderController.sector_flow",
+      "tags": [
+        "insiders"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/insider/{ticker}",
+      "method": "GET",
+      "summary": "Insiders",
+      "description": "Returns all insiders for the given ticker",
+      "operationId": "PublicApi.InsiderController.insiders",
+      "tags": [
+        "insiders"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/insider/{ticker}/ticker-flow",
+      "method": "GET",
+      "summary": "Ticker Flow",
+      "description": "Returns an aggregated view of the insider flow for the given ticker.\n\nThis can be used to quickly examine the buy & sell insider flow for a given trading date",
+      "operationId": "PublicApi.InsiderController.ticker_flow",
+      "tags": [
+        "insiders"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/institution/{name}/activity",
+      "method": "GET",
+      "summary": "Institutional Activity",
+      "description": "The trading activities for a given institution.",
+      "operationId": "PublicApi.InstitutionController.activity",
+      "tags": [
+        "institution"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/institution/{name}/holdings",
+      "method": "GET",
+      "summary": "Institutional Holdings",
+      "description": "Returns the holdings for a given institution.",
+      "operationId": "PublicApi.InstitutionController.holdings",
+      "tags": [
+        "institution"
+      ],
+      "parameters": 9
+    },
+    {
+      "path": "/api/institution/{name}/sectors",
+      "method": "GET",
+      "summary": "Sector Exposure",
+      "description": "The sector exposure for a given institution.",
+      "operationId": "PublicApi.InstitutionController.sectors",
+      "tags": [
+        "institution"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/institution/{ticker}/ownership",
+      "method": "GET",
+      "summary": "Institutional Ownership",
+      "description": "The institutional ownership of a given ticker.",
+      "operationId": "PublicApi.InstitutionController.ownership",
+      "tags": [
+        "institution"
+      ],
+      "parameters": 9
+    },
+    {
+      "path": "/api/institutions",
+      "method": "GET",
+      "summary": "List of Institutions",
+      "description": "Returns a list of institutions.",
+      "operationId": "PublicApi.InstitutionController.list",
+      "tags": [
+        "institution"
+      ],
+      "parameters": 10
+    },
+    {
+      "path": "/api/institutions/latest_filings",
+      "method": "GET",
+      "summary": "Latest Filings",
+      "description": "The latest institutional filings.",
+      "operationId": "PublicApi.InstitutionController.latest_filings",
+      "tags": [
+        "institution"
+      ],
+      "parameters": 6
+    },
+    {
+      "path": "/api/market/correlations",
+      "method": "GET",
+      "summary": "Correlations",
+      "description": "Returns the correlations between a list of tickers.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.\n\nYou can filter the time period either b",
+      "operationId": "PublicApi.MarketController.correlations",
+      "tags": [
+        "market"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/market/economic-calendar",
+      "method": "GET",
+      "summary": "Economic calendar",
+      "description": "Returns the economic calendar.",
+      "operationId": "PublicApi.MarketController.events",
+      "tags": [
+        "market"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/market/fda-calendar",
+      "method": "GET",
+      "summary": "FDA Calendar",
+      "description": "Returns FDA calendar data with filtering options.\n\nThe FDA calendar contains information about:\n- PDUFA (Prescription Drug User Fee Act) dates\n- Advisory Committee Meetings\n- FDA Decisions\n- Clinical ",
+      "operationId": "PublicApi.MarketController.fda_calendar",
+      "tags": [
+        "market"
+      ],
+      "parameters": 7
+    },
+    {
+      "path": "/api/market/insider-buy-sells",
+      "method": "GET",
+      "summary": "Total Insider Buy & Sells",
+      "description": "Returns the total amount of purchases & sells as well as notional values for insider transactions\nacross the market",
+      "operationId": "PublicApi.MarketController.insider_buy_sells",
+      "tags": [
+        "market"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/market/market-tide",
+      "method": "GET",
+      "summary": "Market Tide",
+      "description": "Market Tide is a proprietary tool that can be viewed from the Market Overview page. The Market Tide chart provides real time data based on a proprietary formula that examines market wide options activ",
+      "operationId": "PublicApi.MarketController.market_tide",
+      "tags": [
+        "market"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/market/oi-change",
+      "method": "GET",
+      "summary": "OI Change",
+      "description": "Returns the non-Index/non-ETF contracts and OI change data with the highest OI change (default: descending).\nDate must be the current or a past date. If no date is given, returns data for the current/",
+      "operationId": "PublicApi.MarketController.oi_change",
+      "tags": [
+        "market"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/market/sector-etfs",
+      "method": "GET",
+      "summary": "Sector Etfs",
+      "description": "Returns the current trading days statistics for the SPDR sector etfs\n\n----\nThis can be used to build a market overview such as:\n\n![sectors etf](https://i.imgur.com/yQ5o6rR.png)",
+      "operationId": "PublicApi.MarketController.sector_etfs",
+      "tags": [
+        "market"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/market/spike",
+      "method": "GET",
+      "summary": "SPIKE",
+      "description": "Returns the SPIKE values for the given date.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+      "operationId": "PublicApi.MarketController.spike",
+      "tags": [
+        "market"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/market/top-net-impact",
+      "method": "GET",
+      "summary": "Top Net Impact",
+      "description": "Returns the top tickers by net premium (half bullish, half bearish). Defaults to last market day.",
+      "operationId": "PublicApi.MarketController.top_net_impact",
+      "tags": [
+        "market"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/market/total-options-volume",
+      "method": "GET",
+      "summary": "Total Options Volume",
+      "description": "Returns the total options volume and premium for all trade executions\nthat happened on a given trading date.\n\n----\nThis can be used to build a market options overview such as:\n\n![Market State](https:/",
+      "operationId": "PublicApi.MarketController.total_options_volume",
+      "tags": [
+        "market"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/market/{sector}/sector-tide",
+      "method": "GET",
+      "summary": "Sector Tide",
+      "description": "The Sector tide is similar to the Market Tide. While the market tide is based on options activity of the whole market\nthe sector tide is only based on the options activity of companies which are in th",
+      "operationId": "PublicApi.MarketController.sec_indst",
+      "tags": [
+        "market"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/market/{ticker}/etf-tide",
+      "method": "GET",
+      "summary": "ETF Tide",
+      "description": "The ETF tide is similar to the Market Tide. While the market tide is based on options activity of the whole market\nthe ETF tide is only based on the options activity of the holdings of the specified E",
+      "operationId": "PublicApi.MarketController.etf_tide",
+      "tags": [
+        "market"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/net-flow/expiry",
+      "method": "GET",
+      "summary": "Net Flow Expiry",
+      "description": "Returns net premium flow by `tide_type` category, `moneyness` category, and `expiration` category, allowing you to create chart variations like [https://unusualwhales.com/zero-dte](https://unusualwhal",
+      "operationId": "PublicApi.NetFlowController.expiry",
+      "tags": [
+        "market"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/news/headlines",
+      "method": "GET",
+      "summary": "News Headlines",
+      "description": "Returns the latest news headlines for financial markets.\n\nThis endpoint provides access to news headlines that may impact the markets, including company-specific\nnews, sector news, and market-wide eve",
+      "operationId": "PublicApi.NewsController.headlines",
+      "tags": [
+        "news"
+      ],
+      "parameters": 5
+    },
+    {
+      "path": "/api/option-contract/{id}/flow",
+      "method": "GET",
+      "summary": "Flow Data",
+      "description": "Returns the last 50 option trades for the given option chain. Optionally a min premium and a side can be supplied in the query for further filtering.\nIf no date is specified data for the last trading ",
+      "operationId": "PublicApi.OptionContractController.flow",
+      "tags": [
+        "option-contract"
+      ],
+      "parameters": 5
+    },
+    {
+      "path": "/api/option-contract/{id}/historic",
+      "method": "GET",
+      "summary": "Historic Data",
+      "description": "Returns for every trading day historic data for the given option contract",
+      "operationId": "PublicApi.OptionContractController.history",
+      "tags": [
+        "option-contract"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/option-contract/{id}/intraday",
+      "method": "GET",
+      "summary": "Intraday Data",
+      "description": "Returns 1 minute interval intraday data for the given option contract.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+      "operationId": "PublicApi.OptionContractController.intraday",
+      "tags": [
+        "option-contract"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/option-contract/{id}/volume-profile",
+      "method": "GET",
+      "summary": "Volume Profile",
+      "description": "Returns the volume profile (volume - sweep, floor, cross, ask, bid, etc. - per fill price) for an option symbol on a given trading day.\nDate must be the current or a past date. If no date is given, re",
+      "operationId": "PublicApi.OptionContractController.volume_profile",
+      "tags": [
+        "option-contract"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/option-trades/flow-alerts",
+      "method": "GET",
+      "summary": "Flow Alerts",
+      "description": "Returns the latest flow alerts.",
+      "operationId": "PublicApi.OptionTradeController.flow_alerts",
+      "tags": [
+        "option-trade"
+      ],
+      "parameters": 28
+    },
+    {
+      "path": "/api/option-trades/full-tape/{date}",
+      "method": "GET",
+      "summary": "Full Tape",
+      "description": "Download all option transactions (the \"full tape\") for a given trading date.\n\nNOTICE: Access to this endpoint is only included in the Advanced API subscription.\n\nThe last 3 trading days are available ",
+      "operationId": "PublicApi.OptionTradeController.full_tape",
+      "tags": [
+        "option-trade"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/politician-portfolios/holders/{ticker}",
+      "method": "GET",
+      "summary": "Politician Portfolio Holders by Ticker",
+      "description": "Returns all politician portfolio owner names, ID, and holdings for the specified ticker.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+      "operationId": "PublicApi.PoliticianPortfoliosController.holds_ticker",
+      "tags": [
+        "politician_portfolios"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/politician-portfolios/people",
+      "method": "GET",
+      "summary": "Politicians List",
+      "description": "Returns all politician names and IDs.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+      "operationId": "PublicApi.PoliticianPortfoliosController.people",
+      "tags": [
+        "politician_portfolios"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/politician-portfolios/{politician_id}",
+      "method": "GET",
+      "summary": "Politician Portfolios",
+      "description": "Returns all portfolios and holdings for a politician.\n\nThis is an enterprise only endpoint. Contact dan@unusualwhales.com for details about accessing this data.",
+      "operationId": "PublicApi.PoliticianPortfoliosController.portfolios",
+      "tags": [
+        "politician_portfolios"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/screener/analysts",
+      "method": "GET",
+      "summary": "Analyst Rating",
+      "description": "Returns the latest analyst rating for the given ticker.",
+      "operationId": "PublicApi.ScreenerController.analyst_ratings",
+      "tags": [
+        "screener"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/screener/option-contracts",
+      "method": "GET",
+      "summary": "Hottest Chains",
+      "description": "A contract screener endpoint to screen the market for contracts by a variety of filter options.\n\nFor an example of what can be build with this endpoint check out the [Hottest Contracts](https://unusua",
+      "operationId": "PublicApi.ScreenerController.contract_screener",
+      "tags": [
+        "screener"
+      ],
+      "parameters": 91
+    },
+    {
+      "path": "/api/screener/stocks",
+      "method": "GET",
+      "summary": "Stock Screener",
+      "description": "A stock screener endpoint to screen the market for stocks by a variety of filter options.\n\nFor an example of what can be build with this endpoint check out the [Stock Screener](https://unusualwhales.c",
+      "operationId": "PublicApi.ScreenerController.stock_screener",
+      "tags": [
+        "screener"
+      ],
+      "parameters": 66
+    },
+    {
+      "path": "/api/seasonality/market",
+      "method": "GET",
+      "summary": "Market Seasonality",
+      "description": "Returns the average return by month for the tickers SPY, QQQ, IWM, XLE, XLC, XLK, XLV, XLP, XLY, XLRE, XLF, XLI, XLB .",
+      "operationId": "PublicApi.SeasonalityController.market_seasonality",
+      "tags": [
+        "seasonality"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/seasonality/{month}/performers",
+      "method": "GET",
+      "summary": "Month Performers",
+      "description": "Returns the tickers with the highest performance in terms of price change in the month over the years.\nPer default the result is ordered by 'positive_months_perc' descending, then 'median_change' desc",
+      "operationId": "PublicApi.SeasonalityController.month_performers",
+      "tags": [
+        "seasonality"
+      ],
+      "parameters": 8
+    },
+    {
+      "path": "/api/seasonality/{ticker}/monthly",
+      "method": "GET",
+      "summary": "Average return per month",
+      "description": "Returns the average return by month for the given ticker.",
+      "operationId": "PublicApi.SeasonalityController.monthly",
+      "tags": [
+        "seasonality"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/seasonality/{ticker}/year-month",
+      "method": "GET",
+      "summary": "Price change per month per year",
+      "description": "Returns the relative price change for all past months over multiple years.",
+      "operationId": "PublicApi.SeasonalityController.year_month",
+      "tags": [
+        "seasonality"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/shorts/{ticker}/data",
+      "method": "GET",
+      "summary": "Short Data",
+      "description": "Returns short data including rebate rate and short shares available for a ticker.",
+      "operationId": "PublicApi.ShortController.short_data",
+      "tags": [
+        "short"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/shorts/{ticker}/ftds",
+      "method": "GET",
+      "summary": "Failures to Deliver",
+      "description": "Returns the short failures to deliver per day for the given ticker starting from the given date.\nIf no date is given, returns the data for the current/last market day.",
+      "operationId": "PublicApi.ShortController.failures_to_deliver",
+      "tags": [
+        "short"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/shorts/{ticker}/interest-float",
+      "method": "GET",
+      "summary": "Short Interest and Float",
+      "description": "Returns short interest and float data for percentage calculations for a ticker.\nThis endpoint provides information about the percentage of float that is shorted,\nthe float size, and the days to cover ",
+      "operationId": "PublicApi.ShortController.short_interest_and_float",
+      "tags": [
+        "short"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/shorts/{ticker}/volume-and-ratio",
+      "method": "GET",
+      "summary": "Short Volume and Ratio",
+      "description": "Returns short volume and short ratio data for a ticker.",
+      "operationId": "PublicApi.ShortController.short_volume_and_ratio",
+      "tags": [
+        "short"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/shorts/{ticker}/volumes-by-exchange",
+      "method": "GET",
+      "summary": "Short Volume By Exchange",
+      "description": "Returns short volume data broken down by exchange for a ticker.",
+      "operationId": "PublicApi.ShortController.short_volume_by_exchange",
+      "tags": [
+        "short"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/socket",
+      "method": "GET",
+      "summary": "WebSocket channels",
+      "description": "Returns the available WebSocket channels for connections.\n\n## Websocket Guide\n#You can find fully-functional examples that stream data from many channels here:\n\n- Python: [https://github.com/unusual-w",
+      "operationId": "PublicApi.SocketController.channels",
+      "tags": [
+        "websocket"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/socket/flow_alerts",
+      "method": "GET",
+      "summary": "Flow alerts",
+      "description": "**NOTE:**\nThis is the documentation for websocket channel `flow-alerts`.\nWebsocket access for personal use is only available through the [Advanced plan](https://unusualwhales.com/pricing?product=api).",
+      "operationId": "PublicApi.SocketController.flow_alerts",
+      "tags": [
+        "websocket"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/socket/gex",
+      "method": "GET",
+      "summary": "GEX",
+      "description": "**NOTE:**\nThis is the documentation for websocket channels `gex:<TICKER>`, `gex_strike:<TICKER>`, and `gex_strike_expiry:<TICKER>`.\nWebsocket access for personal use is only available through the[Adva",
+      "operationId": "PublicApi.SocketController.gex",
+      "tags": [
+        "websocket"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/socket/news",
+      "method": "GET",
+      "summary": "News",
+      "description": "**NOTE:**\nThis is the documentation for websocket channel `news`.\nWebsocket access for personal use is only available through the [Advanced plan](https://unusualwhales.com/pricing?product=api).\n\nYou c",
+      "operationId": "PublicApi.SocketController.news",
+      "tags": [
+        "websocket"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/socket/option_trades",
+      "method": "GET",
+      "summary": "Option trades",
+      "description": "**NOTE:**\nThis is the documentation for websocket channels `option_trades` and `option_trades:<TICKER>`.\nWebsocket access for personal use is only available through the [Advanced plan](https://unusual",
+      "operationId": "PublicApi.SocketController.option_trades",
+      "tags": [
+        "websocket"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/socket/price",
+      "method": "GET",
+      "summary": "Price",
+      "description": "**NOTE:**\nThis is the documentation for websocket channel `price:<TICKER>`.\nWebsocket access for personal use is only available through the[Advanced plan](https://unusualwhales.com/pricing?product=api",
+      "operationId": "PublicApi.SocketController.price",
+      "tags": [
+        "websocket"
+      ],
+      "parameters": 0
+    },
+    {
+      "path": "/api/stock/{sector}/tickers",
+      "method": "GET",
+      "summary": "Companies in Sector",
+      "description": "Returns a list of tickers which are in the given sector.",
+      "operationId": "PublicApi.TickerController.companies_in_sector",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/stock/{ticker}/atm-chains",
+      "method": "GET",
+      "summary": "ATM Chains",
+      "description": "Returns the ATM chains for the given expirations",
+      "operationId": "PublicApi.TickerController.atm_chains",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/expiry-breakdown",
+      "method": "GET",
+      "summary": "Expiry Breakdown",
+      "description": "Returns all expirations for the given trading day for a ticker.",
+      "operationId": "PublicApi.OptionContractController.expiry_breakdown",
+      "tags": [
+        "option-contract"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/flow-alerts",
+      "method": "GET",
+      "summary": "Flow Alerts",
+      "description": "This endpoint has been deprecated and will be removed.\nPlease migrate to this Flow Alerts endpoint, which provides a more detailed response: [https://api.unusualwhales.com/docs#/operations/PublicApi.O",
+      "operationId": "PublicApi.TickerController.flow_alerts",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 4
+    },
+    {
+      "path": "/api/stock/{ticker}/flow-per-expiry",
+      "method": "GET",
+      "summary": "Flow per expiry",
+      "description": "Returns the option flow per expiry for the last trading day",
+      "operationId": "PublicApi.TickerController.flow_per_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/stock/{ticker}/flow-per-strike",
+      "method": "GET",
+      "summary": "Flow per strike",
+      "description": "Returns the option flow per strike for a given trading day.",
+      "operationId": "PublicApi.TickerController.flow_per_strike",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/flow-per-strike-intraday",
+      "method": "GET",
+      "summary": "Flow per strike intraday",
+      "description": "Returns the options flow for a given date in one minute intervals (the one minute intervals are not aggregated with each other).",
+      "operationId": "PublicApi.TickerController.flow_per_strike_intraday",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/flow-recent",
+      "method": "GET",
+      "summary": "Recent flows",
+      "description": "Returns the latest flows for the given ticker. Optionally a min premium and a side can be supplied in the query for further filtering.",
+      "operationId": "PublicApi.TickerController.flow_recent",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/greek-exposure",
+      "method": "GET",
+      "summary": "Greek Exposure",
+      "description": "Greek Exposure is the assumed greek exposure that market makers are exposed to.\n\nThe most popular greek exposure is gamma exposure (GEX).\n\nInvestors and large funds lower risk and protect their money ",
+      "operationId": "PublicApi.TickerController.greek_exposure",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/greek-exposure/expiry",
+      "method": "GET",
+      "summary": "Greek Exposure By Expiry",
+      "description": "The greek exposure of a ticker grouped by expiry dates across all contracts on a given market date.",
+      "operationId": "PublicApi.TickerController.greek_exposure_by_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/greek-exposure/strike",
+      "method": "GET",
+      "summary": "Greek Exposure By Strike",
+      "description": "The greek exposure of a ticker grouped by strike price across all contracts on a given market date.",
+      "operationId": "PublicApi.TickerController.greek_exposure_by_strike",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/greek-exposure/strike-expiry",
+      "method": "GET",
+      "summary": "Greek Exposure By Strike And Expiry",
+      "description": "The greek exposure of a ticker grouped by strike price for a specific expiry date.",
+      "operationId": "PublicApi.TickerController.greek_exposure_by_strike_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/greek-flow",
+      "method": "GET",
+      "summary": "Greek flow",
+      "description": "Returns the tickers greek flow (delta & vega flow) for the given market day broken down per minute.\nDate must be the current or a past date. If no date is given, returns data for the current/last mark",
+      "operationId": "PublicApi.TickerController.greek_flow",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/greek-flow/{expiry}",
+      "method": "GET",
+      "summary": "Greek flow by expiry",
+      "description": "Returns the tickers greek flow (delta & vega flow) for the given market day broken down per minute & expiry.\nDate must be the current or a past date. If no date is given, returns data for the current/",
+      "operationId": "PublicApi.TickerController.greek_flow_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/greeks",
+      "method": "GET",
+      "summary": "Greeks",
+      "description": "Returns the greeks for each strike for a single expiry date.",
+      "operationId": "PublicApi.TickerController.greeks",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/historical-risk-reversal-skew",
+      "method": "GET",
+      "summary": "Historical Risk Reversal Skew",
+      "description": "Returns the historical risk reversal skew (the difference between put and call volatility) at a delta of 25 or 10 (colloquial for 0.25 or 0.1) for a given expiry date.",
+      "operationId": "PublicApi.TickerController.historical_risk_reversal_skew",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 5
+    },
+    {
+      "path": "/api/stock/{ticker}/info",
+      "method": "GET",
+      "summary": "Information",
+      "description": "Returns a information about the given ticker.",
+      "operationId": "PublicApi.TickerController.info",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/stock/{ticker}/insider-buy-sells",
+      "method": "GET",
+      "summary": "Insider buy & sells",
+      "description": "Returns the total amount of purchases & sells as well as notional values for insider transactions\nfor the given ticker",
+      "operationId": "PublicApi.TickerController.insider_buy_sell",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/stock/{ticker}/interpolated-iv",
+      "method": "GET",
+      "summary": "Interpolated IV",
+      "description": "Returns the Interpolated IV for a given trading day. If there is no expiration then the data is calcualted via linear interpolation\nwith the next 2 closest expirations\n\nDate must be the current or a p",
+      "operationId": "PublicApi.TickerController.interpolated_iv",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/iv-rank",
+      "method": "GET",
+      "summary": "IV Rank",
+      "description": "Returns the IV rank data for a ticker over a period of time.\nIV rank is a measure of where current implied volatility stands relative to its historical range.",
+      "operationId": "PublicApi.TickerController.iv_rank",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/max-pain",
+      "method": "GET",
+      "summary": "Max Pain",
+      "description": "Returns the max pain for all expirations for the given ticker for the last 120 days",
+      "operationId": "PublicApi.TickerController.max_pain",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/net-prem-ticks",
+      "method": "GET",
+      "summary": "Call/Put Net/Vol Ticks",
+      "description": "Returns the net premium ticks for a given ticker which can be used to build the following chart:\n![Net Prem chart](https://i.imgur.com/Rom1kcB.png)\n\n----\nEach tick is resembling the data for a single ",
+      "operationId": "PublicApi.TickerController.net_prem_ticks",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/nope",
+      "method": "GET",
+      "summary": "Nope",
+      "description": "Returns the tickers NOPE for the given market day broken down per minute.\n\nNOPE is the Net Options Pricing Effect, which tracks the intraday net delta of any ticker, but most research has been done on",
+      "operationId": "PublicApi.TickerController.nope",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/ohlc/{candle_size}",
+      "method": "GET",
+      "summary": "OHLC",
+      "description": "Returns the Open High Low Close (OHLC) candle data for a given ticker.\n\nResults are limited to 2,500 elements even if there are more available.\n\nNote: If you select 1d as a candle_size then the candle",
+      "operationId": "PublicApi.TickerController.ohlc",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 6
+    },
+    {
+      "path": "/api/stock/{ticker}/oi-change",
+      "method": "GET",
+      "summary": "OI Change",
+      "description": "Returns the tickers contracts' OI change data ordered by absolute OI change (default: descending).\nDate must be the current or a past date. If no date is given, returns data for the current/last marke",
+      "operationId": "PublicApi.TickerController.oi_change",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 5
+    },
+    {
+      "path": "/api/stock/{ticker}/oi-per-expiry",
+      "method": "GET",
+      "summary": "OI per Expiry",
+      "description": "Returns the total open interest for calls and puts for a specific expiry date.",
+      "operationId": "PublicApi.TickerController.oi_per_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/oi-per-strike",
+      "method": "GET",
+      "summary": "OI per Strike",
+      "description": "Returns the total open interest for calls and puts for a specific strike.",
+      "operationId": "PublicApi.TickerController.oi_per_strike",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/option-chains",
+      "method": "GET",
+      "summary": "Option Chains",
+      "description": "Returns all option symbols for the given ticker that were present at the given day.\n\nIf no date is given, returns data for the current/last market day.\n\nYou can use the following regex to extract unde",
+      "operationId": "PublicApi.TickerController.option_chains",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/option-contracts",
+      "method": "GET",
+      "summary": "Option contracts",
+      "description": "Returns all option contracts for the given ticker",
+      "operationId": "PublicApi.OptionContractController.option_contracts",
+      "tags": [
+        "option-contract"
+      ],
+      "parameters": 11
+    },
+    {
+      "path": "/api/stock/{ticker}/option/stock-price-levels",
+      "method": "GET",
+      "summary": "Option Price Levels",
+      "description": "Returns the call and put volume per price level for the given ticker.\n\n----\nCan be used to build a chart such as following:\n![Option Price Level chart](https://i.imgur.com/y6BZ4sG.png)",
+      "operationId": "PublicApi.TickerController.option_price_level",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/option/volume-oi-expiry",
+      "method": "GET",
+      "summary": "Volume & OI per Expiry",
+      "description": "Returns the total volume and open interest per expiry for the given ticker.",
+      "operationId": "PublicApi.TickerController.vol_oi_per_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/options-volume",
+      "method": "GET",
+      "summary": "Options Volume",
+      "description": "Returns the options volume & premium for all trade executions\nthat happened on a given trading date for the given ticker.\n\n----\nThis can be used to build a ticker options overview such as:\n\n![Table](h",
+      "operationId": "PublicApi.TickerController.options_volume",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/spot-exposures",
+      "method": "GET",
+      "summary": "Spot GEX exposures per 1min",
+      "description": "Returns the spot GEX exposures for the given ticker per minute.\n\nSpot GEX is the assumed $ value of the given greek (ie. gamma) exposure that market makers need to hedge per 1% change of the underlyin",
+      "operationId": "PublicApi.TickerController.spot_exposures_one_minute",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/spot-exposures/expiry-strike",
+      "method": "GET",
+      "summary": "Spot GEX exposures by strike & expiry",
+      "description": "Returns the most recent spot GEX exposures across all strikes for the given ticker & expiration on a given date. Calculated either with open interest or with volume.\n\nData is available since 2025-01-1",
+      "operationId": "PublicApi.TickerController.spot_exposures_by_strike_expiry_v2",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 9
+    },
+    {
+      "path": "/api/stock/{ticker}/spot-exposures/strike",
+      "method": "GET",
+      "summary": "Spot GEX exposures by strike",
+      "description": "Returns the most recent spot GEX exposures across all strikes for the given ticker on a given date. Calculated either with open interest or with volume.\n\nSpot GEX is the assumed $ value of the given g",
+      "operationId": "PublicApi.TickerController.spot_exposures_by_strike",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 6
+    },
+    {
+      "path": "/api/stock/{ticker}/spot-exposures/{expiry}/strike",
+      "method": "GET",
+      "summary": "Spot GEX exposures by strike & expiry (Deprecated)",
+      "description": "This endpoint has been deprecated and will be removed, please migrate to the new [endpoint](https://api.unusualwhales.com/docs#/operations/PublicApi.TickerController.spot_exposures_by_strike_expiry_v2",
+      "operationId": "PublicApi.TickerController.spot_exposures_by_strike_expiry",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 5
+    },
+    {
+      "path": "/api/stock/{ticker}/stock-state",
+      "method": "GET",
+      "summary": "Stock State",
+      "description": "Returns the last stock state for the given ticker.\n\nThis is the easiest way to retreive the open, close, high, low and volume of the last trading day.",
+      "operationId": "PublicApi.TickerController.last_stock_state",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 1
+    },
+    {
+      "path": "/api/stock/{ticker}/stock-volume-price-levels",
+      "method": "GET",
+      "summary": "Off/Lit Price Levels",
+      "description": "Returns the lit & off lit stock volume per price level for the given ticker.\n\n----\nImportant: The volume does **NOT** represent the full market dialy volume. It\nonly represents the volume of executed ",
+      "operationId": "PublicApi.TickerController.stock_volume_price_level",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/volatility/realized",
+      "method": "GET",
+      "summary": "Realized Volatility",
+      "description": "The implied and realized volatility of a given ticker. The implied volatility is the expected 30 day forward looking volatility.\n\nThe realized/historical volatility is the volatility of the stock pric",
+      "operationId": "PublicApi.TickerController.realized_volatility",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 3
+    },
+    {
+      "path": "/api/stock/{ticker}/volatility/stats",
+      "method": "GET",
+      "summary": "Volatility Statistics",
+      "description": "Returns comprehensive volatility statistics for a ticker on a specific date, including\nimplied volatility data, realized volatility data, and their respective high/low values\nfor the past year.",
+      "operationId": "PublicApi.TickerController.volatility_stats",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    },
+    {
+      "path": "/api/stock/{ticker}/volatility/term-structure",
+      "method": "GET",
+      "summary": "Implied Volatility Term Structure",
+      "description": "The average of the latest volatilities for the at the money call and put contracts for every expiry date.",
+      "operationId": "PublicApi.TickerController.implied_volatility_term_structure",
+      "tags": [
+        "stock"
+      ],
+      "parameters": 2
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "name": "Agent 2: ETFs & Institutions",
+  "categories": [
+    "etfs",
+    "group-flow",
+    "insider",
+    "institution",
+    "institutions"
+  ],
+  "endpoints": [
+    {
+      "category": "etfs",
+      "path": "/api/etfs/{ticker}/exposure",
+      "method": "GET",
+      "summary": "Exposure",
+      "description": "Returns all ETFs in which the given ticker is a holding",
+      "operationId": "PublicApi.EtfController.exposure",
+      "parameters": 1
+    },
+    {
+      "category": "etfs",
+      "path": "/api/etfs/{ticker}/holdings",
+      "method": "GET",
+      "summary": "Holdings",
+      "description": "Returns the holdings of the ETF",
+      "operationId": "PublicApi.EtfController.holdings",
+      "parameters": 1
+    },
+    {
+      "category": "etfs",
+      "path": "/api/etfs/{ticker}/in-outflow",
+      "method": "GET",
+      "summary": "Inflow & Outflow",
+      "description": "Returns an ETF's inflow and outflow",
+      "operationId": "PublicApi.EtfController.in_outflow",
+      "parameters": 1
+    },
+    {
+      "category": "etfs",
+      "path": "/api/etfs/{ticker}/info",
+      "method": "GET",
+      "summary": "Information",
+      "description": "Returns the information about the given ETF ticker.",
+      "operationId": "PublicApi.EtfController.info",
+      "parameters": 1
+    },
+    {
+      "category": "etfs",
+      "path": "/api/etfs/{ticker}/weights",
+      "method": "GET",
+      "summary": "Sector & Country weights",
+      "description": "Returns the sector & country weights for the given ETF ticker.",
+      "operationId": "PublicApi.EtfController.weights",
+      "parameters": 1
+    },
+    {
+      "category": "group-flow",
+      "path": "/api/group-flow/{flow_group}/greek-flow",
+      "method": "GET",
+      "summary": "Greek flow",
+      "description": "Returns the group flow's greek flow (delta & vega flow) for the given market day broken down per minute.\nDate must be the current or a past date. If no date is given, returns data for the current/last",
+      "operationId": "PublicApi.GroupFlowController.greek_flow",
+      "parameters": 2
+    },
+    {
+      "category": "group-flow",
+      "path": "/api/group-flow/{flow_group}/greek-flow/{expiry}",
+      "method": "GET",
+      "summary": "Greek flow by expiry",
+      "description": "Returns the group flow's greek flow (delta & vega flow) for the given market day broken down per minute & expiry.\nDate must be the current or a past date. If no date is given, returns data for the cur",
+      "operationId": "PublicApi.GroupFlowController.greek_flow_expiry",
+      "parameters": 3
+    },
+    {
+      "category": "insider",
+      "path": "/api/insider/transactions",
+      "method": "GET",
+      "summary": "Transactions",
+      "description": "Returns the latest insider transactions.\n\nBy default all transacations that have been filled by the same person on the same day with the same trade code are aggregated into a single row.\nEach of those",
+      "operationId": "PublicApi.InsiderController.transactions",
+      "parameters": 24
+    },
+    {
+      "category": "insider",
+      "path": "/api/insider/{sector}/sector-flow",
+      "method": "GET",
+      "summary": "Sector Flow",
+      "description": "Returns an aggregated view of the insider flow for the given sector.\n\nThis can be used to quickly examine the buy & sell insider flow for a given trading date",
+      "operationId": "PublicApi.InsiderController.sector_flow",
+      "parameters": 1
+    },
+    {
+      "category": "insider",
+      "path": "/api/insider/{ticker}",
+      "method": "GET",
+      "summary": "Insiders",
+      "description": "Returns all insiders for the given ticker",
+      "operationId": "PublicApi.InsiderController.insiders",
+      "parameters": 1
+    },
+    {
+      "category": "insider",
+      "path": "/api/insider/{ticker}/ticker-flow",
+      "method": "GET",
+      "summary": "Ticker Flow",
+      "description": "Returns an aggregated view of the insider flow for the given ticker.\n\nThis can be used to quickly examine the buy & sell insider flow for a given trading date",
+      "operationId": "PublicApi.InsiderController.ticker_flow",
+      "parameters": 1
+    },
+    {
+      "category": "institution",
+      "path": "/api/institution/{name}/activity",
+      "method": "GET",
+      "summary": "Institutional Activity",
+      "description": "The trading activities for a given institution.",
+      "operationId": "PublicApi.InstitutionController.activity",
+      "parameters": 4
+    },
+    {
+      "category": "institution",
+      "path": "/api/institution/{name}/holdings",
+      "method": "GET",
+      "summary": "Institutional Holdings",
+      "description": "Returns the holdings for a given institution.",
+      "operationId": "PublicApi.InstitutionController.holdings",
+      "parameters": 9
+    },
+    {
+      "category": "institution",
+      "path": "/api/institution/{name}/sectors",
+      "method": "GET",
+      "summary": "Sector Exposure",
+      "description": "The sector exposure for a given institution.",
+      "operationId": "PublicApi.InstitutionController.sectors",
+      "parameters": 4
+    },
+    {
+      "category": "institution",
+      "path": "/api/institution/{ticker}/ownership",
+      "method": "GET",
+      "summary": "Institutional Ownership",
+      "description": "The institutional ownership of a given ticker.",
+      "operationId": "PublicApi.InstitutionController.ownership",
+      "parameters": 9
+    },
+    {
+      "category": "institutions",
+      "path": "/api/institutions",
+      "method": "GET",
+      "summary": "List of Institutions",
+      "description": "Returns a list of institutions.",
+      "operationId": "PublicApi.InstitutionController.list",
+      "parameters": 10
+    },
+    {
+      "category": "institutions",
+      "path": "/api/institutions/latest_filings",
+      "method": "GET",
+      "summary": "Latest Filings",
+      "description": "The latest institutional filings.",
+      "operationId": "PublicApi.InstitutionController.latest_filings",
+      "parameters": 6
+    }
+  ]
+}

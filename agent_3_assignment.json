@@ -1,0 +1,192 @@
+{
+  "name": "Agent 3: Market & Options",
+  "categories": [
+    "market",
+    "net-flow",
+    "news",
+    "option-contract",
+    "option-trades"
+  ],
+  "endpoints": [
+    {
+      "category": "market",
+      "path": "/api/market/correlations",
+      "method": "GET",
+      "summary": "Correlations",
+      "description": "Returns the correlations between a list of tickers.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.\n\nYou can filter the time period either b",
+      "operationId": "PublicApi.MarketController.correlations",
+      "parameters": 4
+    },
+    {
+      "category": "market",
+      "path": "/api/market/economic-calendar",
+      "method": "GET",
+      "summary": "Economic calendar",
+      "description": "Returns the economic calendar.",
+      "operationId": "PublicApi.MarketController.events",
+      "parameters": 0
+    },
+    {
+      "category": "market",
+      "path": "/api/market/fda-calendar",
+      "method": "GET",
+      "summary": "FDA Calendar",
+      "description": "Returns FDA calendar data with filtering options.\n\nThe FDA calendar contains information about:\n- PDUFA (Prescription Drug User Fee Act) dates\n- Advisory Committee Meetings\n- FDA Decisions\n- Clinical ",
+      "operationId": "PublicApi.MarketController.fda_calendar",
+      "parameters": 7
+    },
+    {
+      "category": "market",
+      "path": "/api/market/insider-buy-sells",
+      "method": "GET",
+      "summary": "Total Insider Buy & Sells",
+      "description": "Returns the total amount of purchases & sells as well as notional values for insider transactions\nacross the market",
+      "operationId": "PublicApi.MarketController.insider_buy_sells",
+      "parameters": 1
+    },
+    {
+      "category": "market",
+      "path": "/api/market/market-tide",
+      "method": "GET",
+      "summary": "Market Tide",
+      "description": "Market Tide is a proprietary tool that can be viewed from the Market Overview page. The Market Tide chart provides real time data based on a proprietary formula that examines market wide options activ",
+      "operationId": "PublicApi.MarketController.market_tide",
+      "parameters": 3
+    },
+    {
+      "category": "market",
+      "path": "/api/market/oi-change",
+      "method": "GET",
+      "summary": "OI Change",
+      "description": "Returns the non-Index/non-ETF contracts and OI change data with the highest OI change (default: descending).\nDate must be the current or a past date. If no date is given, returns data for the current/",
+      "operationId": "PublicApi.MarketController.oi_change",
+      "parameters": 3
+    },
+    {
+      "category": "market",
+      "path": "/api/market/sector-etfs",
+      "method": "GET",
+      "summary": "Sector Etfs",
+      "description": "Returns the current trading days statistics for the SPDR sector etfs\n\n----\nThis can be used to build a market overview such as:\n\n![sectors etf](https://i.imgur.com/yQ5o6rR.png)",
+      "operationId": "PublicApi.MarketController.sector_etfs",
+      "parameters": 0
+    },
+    {
+      "category": "market",
+      "path": "/api/market/spike",
+      "method": "GET",
+      "summary": "SPIKE",
+      "description": "Returns the SPIKE values for the given date.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+      "operationId": "PublicApi.MarketController.spike",
+      "parameters": 1
+    },
+    {
+      "category": "market",
+      "path": "/api/market/top-net-impact",
+      "method": "GET",
+      "summary": "Top Net Impact",
+      "description": "Returns the top tickers by net premium (half bullish, half bearish). Defaults to last market day.",
+      "operationId": "PublicApi.MarketController.top_net_impact",
+      "parameters": 3
+    },
+    {
+      "category": "market",
+      "path": "/api/market/total-options-volume",
+      "method": "GET",
+      "summary": "Total Options Volume",
+      "description": "Returns the total options volume and premium for all trade executions\nthat happened on a given trading date.\n\n----\nThis can be used to build a market options overview such as:\n\n![Market State](https:/",
+      "operationId": "PublicApi.MarketController.total_options_volume",
+      "parameters": 1
+    },
+    {
+      "category": "market",
+      "path": "/api/market/{sector}/sector-tide",
+      "method": "GET",
+      "summary": "Sector Tide",
+      "description": "The Sector tide is similar to the Market Tide. While the market tide is based on options activity of the whole market\nthe sector tide is only based on the options activity of companies which are in th",
+      "operationId": "PublicApi.MarketController.sec_indst",
+      "parameters": 2
+    },
+    {
+      "category": "market",
+      "path": "/api/market/{ticker}/etf-tide",
+      "method": "GET",
+      "summary": "ETF Tide",
+      "description": "The ETF tide is similar to the Market Tide. While the market tide is based on options activity of the whole market\nthe ETF tide is only based on the options activity of the holdings of the specified E",
+      "operationId": "PublicApi.MarketController.etf_tide",
+      "parameters": 2
+    },
+    {
+      "category": "net-flow",
+      "path": "/api/net-flow/expiry",
+      "method": "GET",
+      "summary": "Net Flow Expiry",
+      "description": "Returns net premium flow by `tide_type` category, `moneyness` category, and `expiration` category, allowing you to create chart variations like [https://unusualwhales.com/zero-dte](https://unusualwhal",
+      "operationId": "PublicApi.NetFlowController.expiry",
+      "parameters": 4
+    },
+    {
+      "category": "news",
+      "path": "/api/news/headlines",
+      "method": "GET",
+      "summary": "News Headlines",
+      "description": "Returns the latest news headlines for financial markets.\n\nThis endpoint provides access to news headlines that may impact the markets, including company-specific\nnews, sector news, and market-wide eve",
+      "operationId": "PublicApi.NewsController.headlines",
+      "parameters": 5
+    },
+    {
+      "category": "option-contract",
+      "path": "/api/option-contract/{id}/flow",
+      "method": "GET",
+      "summary": "Flow Data",
+      "description": "Returns the last 50 option trades for the given option chain. Optionally a min premium and a side can be supplied in the query for further filtering.\nIf no date is specified data for the last trading ",
+      "operationId": "PublicApi.OptionContractController.flow",
+      "parameters": 5
+    },
+    {
+      "category": "option-contract",
+      "path": "/api/option-contract/{id}/historic",
+      "method": "GET",
+      "summary": "Historic Data",
+      "description": "Returns for every trading day historic data for the given option contract",
+      "operationId": "PublicApi.OptionContractController.history",
+      "parameters": 2
+    },
+    {
+      "category": "option-contract",
+      "path": "/api/option-contract/{id}/intraday",
+      "method": "GET",
+      "summary": "Intraday Data",
+      "description": "Returns 1 minute interval intraday data for the given option contract.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+      "operationId": "PublicApi.OptionContractController.intraday",
+      "parameters": 2
+    },
+    {
+      "category": "option-contract",
+      "path": "/api/option-contract/{id}/volume-profile",
+      "method": "GET",
+      "summary": "Volume Profile",
+      "description": "Returns the volume profile (volume - sweep, floor, cross, ask, bid, etc. - per fill price) for an option symbol on a given trading day.\nDate must be the current or a past date. If no date is given, re",
+      "operationId": "PublicApi.OptionContractController.volume_profile",
+      "parameters": 2
+    },
+    {
+      "category": "option-trades",
+      "path": "/api/option-trades/flow-alerts",
+      "method": "GET",
+      "summary": "Flow Alerts",
+      "description": "Returns the latest flow alerts.",
+      "operationId": "PublicApi.OptionTradeController.flow_alerts",
+      "parameters": 28
+    },
+    {
+      "category": "option-trades",
+      "path": "/api/option-trades/full-tape/{date}",
+      "method": "GET",
+      "summary": "Full Tape",
+      "description": "Download all option transactions (the \"full tape\") for a given trading date.\n\nNOTICE: Access to this endpoint is only included in the Advanced API subscription.\n\nThe last 3 trading days are available ",
+      "operationId": "PublicApi.OptionTradeController.full_tape",
+      "parameters": 1
+    }
+  ]
+}

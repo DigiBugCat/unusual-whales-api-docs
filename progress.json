@@ -1,0 +1,802 @@
+{
+  "total_endpoints": 109,
+  "documented": 0,
+  "validated": 0,
+  "in_progress": 0,
+  "categories": {
+    "alerts": {
+      "total": 2,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/alerts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/alerts/configuration": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "congress": {
+      "total": 3,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/congress/congress-trader": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/congress/late-reports": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/congress/recent-trades": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "darkpool": {
+      "total": 2,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/darkpool/recent": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/darkpool/{ticker}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "earnings": {
+      "total": 3,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/earnings/afterhours": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/earnings/premarket": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/earnings/{ticker}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "etfs": {
+      "total": 5,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/etfs/{ticker}/exposure": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/etfs/{ticker}/holdings": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/etfs/{ticker}/in-outflow": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/etfs/{ticker}/info": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/etfs/{ticker}/weights": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "group-flow": {
+      "total": 2,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/group-flow/{flow_group}/greek-flow": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/group-flow/{flow_group}/greek-flow/{expiry}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "insider": {
+      "total": 4,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/insider/transactions": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/insider/{sector}/sector-flow": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/insider/{ticker}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/insider/{ticker}/ticker-flow": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "institution": {
+      "total": 4,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/institution/{name}/activity": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/institution/{name}/holdings": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/institution/{name}/sectors": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/institution/{ticker}/ownership": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "institutions": {
+      "total": 2,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/institutions": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/institutions/latest_filings": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "market": {
+      "total": 12,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/market/correlations": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/economic-calendar": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/fda-calendar": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/insider-buy-sells": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/market-tide": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/oi-change": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/sector-etfs": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/spike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/top-net-impact": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/total-options-volume": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/{sector}/sector-tide": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/market/{ticker}/etf-tide": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "net-flow": {
+      "total": 1,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/net-flow/expiry": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "news": {
+      "total": 1,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/news/headlines": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "option-contract": {
+      "total": 4,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/option-contract/{id}/flow": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/option-contract/{id}/historic": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/option-contract/{id}/intraday": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/option-contract/{id}/volume-profile": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "option-trades": {
+      "total": 2,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/option-trades/flow-alerts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/option-trades/full-tape/{date}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "politician-portfolios": {
+      "total": 3,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/politician-portfolios/holders/{ticker}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/politician-portfolios/people": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/politician-portfolios/{politician_id}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "screener": {
+      "total": 3,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/screener/analysts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/screener/option-contracts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/screener/stocks": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "seasonality": {
+      "total": 4,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/seasonality/market": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/seasonality/{month}/performers": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/seasonality/{ticker}/monthly": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/seasonality/{ticker}/year-month": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "shorts": {
+      "total": 5,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/shorts/{ticker}/data": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/shorts/{ticker}/ftds": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/shorts/{ticker}/interest-float": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/shorts/{ticker}/volume-and-ratio": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/shorts/{ticker}/volumes-by-exchange": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "socket": {
+      "total": 6,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/socket": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/socket/flow_alerts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/socket/gex": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/socket/news": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/socket/option_trades": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/socket/price": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    },
+    "stock": {
+      "total": 41,
+      "documented": 0,
+      "validated": 0,
+      "endpoints": {
+        "/api/stock/{sector}/tickers": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/atm-chains": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/expiry-breakdown": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/flow-alerts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/flow-per-expiry": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/flow-per-strike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/flow-per-strike-intraday": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/flow-recent": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greek-exposure": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greek-exposure/expiry": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greek-exposure/strike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greek-exposure/strike-expiry": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greek-flow": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greek-flow/{expiry}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/greeks": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/historical-risk-reversal-skew": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/info": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/insider-buy-sells": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/interpolated-iv": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/iv-rank": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/max-pain": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/net-prem-ticks": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/nope": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/ohlc/{candle_size}": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/oi-change": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/oi-per-expiry": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/oi-per-strike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/option-chains": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/option-contracts": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/option/stock-price-levels": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/option/volume-oi-expiry": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/options-volume": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/spot-exposures": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/spot-exposures/expiry-strike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/spot-exposures/strike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/spot-exposures/{expiry}/strike": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/stock-state": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/stock-volume-price-levels": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/volatility/realized": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/volatility/stats": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        },
+        "/api/stock/{ticker}/volatility/term-structure": {
+          "method": "GET",
+          "status": "not_started",
+          "validated": false,
+          "file_path": ""
+        }
+      }
+    }
+  }
+}

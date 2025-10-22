@@ -1,0 +1,101 @@
+{
+  "name": "Agent 1: Core Operations",
+  "categories": [
+    "alerts",
+    "congress",
+    "darkpool",
+    "earnings"
+  ],
+  "endpoints": [
+    {
+      "category": "alerts",
+      "path": "/api/alerts",
+      "method": "GET",
+      "summary": "Alerts",
+      "description": "Returns all the alerts that have been triggered for the user.\n\nTime filtering is available using the `newer_than` and `older_than` parameters:\n- The maximum lookback period is 14 days\n- If no time ran",
+      "operationId": "PublicApi.AlertsController.alerts",
+      "parameters": 7
+    },
+    {
+      "category": "alerts",
+      "path": "/api/alerts/configuration",
+      "method": "GET",
+      "summary": "Alert configurations",
+      "description": "Returnst all alert configurations of the user.\n\nUsers can create alerts for:\n- Market tide\n- Gamma exposure (GEX), Vanna exposure (VEX), Charm exposure (CEX)\n- Interval Contract screeners (replicates ",
+      "operationId": "PublicApi.AlertsController.configs",
+      "parameters": 0
+    },
+    {
+      "category": "congress",
+      "path": "/api/congress/congress-trader",
+      "method": "GET",
+      "summary": "Recent Reports By Trader",
+      "description": "Returns the recent reports by the given congress member.",
+      "operationId": "PublicApi.CongressController.congress_trader",
+      "parameters": 4
+    },
+    {
+      "category": "congress",
+      "path": "/api/congress/late-reports",
+      "method": "GET",
+      "summary": "Recent Late Reports",
+      "description": "Returns the recent late reports by congress members.\nIf a date is given, will only return recent late reports, which's report date is <= the given input date.",
+      "operationId": "PublicApi.CongressController.congress_late_reports",
+      "parameters": 3
+    },
+    {
+      "category": "congress",
+      "path": "/api/congress/recent-trades",
+      "method": "GET",
+      "summary": "Recent Congress Trades",
+      "description": "Returns the latest transacted trades by congress members.\nIf a date is given, will only return reports, which's transaction date is <= the given input date.",
+      "operationId": "PublicApi.CongressController.congress_recent_trades",
+      "parameters": 3
+    },
+    {
+      "category": "darkpool",
+      "path": "/api/darkpool/recent",
+      "method": "GET",
+      "summary": "Recent Darkpool Trades",
+      "description": "Returns the latest darkpool trades.",
+      "operationId": "PublicApi.DarkpoolController.darkpool_recent",
+      "parameters": 8
+    },
+    {
+      "category": "darkpool",
+      "path": "/api/darkpool/{ticker}",
+      "method": "GET",
+      "summary": "Ticker Darkpool Trades",
+      "description": "Returns the darkpool trades for the given ticker on a given day.\nDate must be the current or a past date. If no date is given, returns data for the current/last market day.",
+      "operationId": "PublicApi.DarkpoolController.darkpool_ticker",
+      "parameters": 11
+    },
+    {
+      "category": "earnings",
+      "path": "/api/earnings/afterhours",
+      "method": "GET",
+      "summary": "Afterhours",
+      "description": "Returns the afterhours earnings for a given date.",
+      "operationId": "PublicApi.EarningsController.afterhours",
+      "parameters": 3
+    },
+    {
+      "category": "earnings",
+      "path": "/api/earnings/premarket",
+      "method": "GET",
+      "summary": "Premarket",
+      "description": "Returns the premarket earnings for a given date.",
+      "operationId": "PublicApi.EarningsController.premarket",
+      "parameters": 3
+    },
+    {
+      "category": "earnings",
+      "path": "/api/earnings/{ticker}",
+      "method": "GET",
+      "summary": "Historical Ticker Earnings",
+      "description": "Returns the historical earnings for the given ticker.",
+      "operationId": "PublicApi.EarningsController.ticker",
+      "parameters": 1
+    }
+  ]
+}
