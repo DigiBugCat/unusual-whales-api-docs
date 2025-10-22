@@ -216,5 +216,5 @@ Standard API rate limits apply. This endpoint provides frequently updated news d
 **Test Command**:
 ```bash
 curl -s "https://api.unusualwhales.com/api/news/headlines?limit=3" \
-  -H "Authorization: Bearer 5d1ec006-49f0-4a2a-90ae-5176c72425e3"
+  -H "Authorization: Bearer YOUR_API_KEY"
 ```

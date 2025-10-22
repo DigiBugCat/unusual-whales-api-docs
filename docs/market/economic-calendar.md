@@ -178,5 +178,5 @@ Standard API rate limits apply. This endpoint retrieves static calendar data wit
 **Test Command**:
 ```bash
 curl -s "https://api.unusualwhales.com/api/market/economic-calendar" \
-  -H "Authorization: Bearer 5d1ec006-49f0-4a2a-90ae-5176c72425e3"
+  -H "Authorization: Bearer YOUR_API_KEY"
 ```

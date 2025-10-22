@@ -208,5 +208,5 @@ Standard API rate limits apply. File downloads may take longer depending on file
 ```bash
 curl -s -o full_tape_sample.zip \
   https://api.unusualwhales.com/api/option-trades/full-tape/2025-10-22 \
-  -H "Authorization: Bearer 5d1ec006-49f0-4a2a-90ae-5176c72425e3"
+  -H "Authorization: Bearer YOUR_API_KEY"
 ```
