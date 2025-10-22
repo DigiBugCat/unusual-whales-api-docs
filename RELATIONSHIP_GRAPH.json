@@ -1,0 +1,252 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "generated": "2025-10-22",
+    "total_endpoints": 109,
+    "total_relationships": 48,
+    "discovery_method": "systematic_curl_tracing"
+  },
+  "nodes": {
+    "/api/market/oi-change": {
+      "category": "market",
+      "requires_parameters": false
+    },
+    "/api/market/market-tide": {
+      "category": "market",
+      "requires_parameters": false
+    },
+    "/api/market/sector-etfs": {
+      "category": "market",
+      "requires_parameters": false
+    },
+    "/api/screener/stocks": {
+      "category": "screener",
+      "requires_parameters": false
+    },
+    "/api/screener/option-contracts": {
+      "category": "screener",
+      "requires_parameters": false
+    },
+    "/api/stock/{ticker}/info": {
+      "category": "stock",
+      "requires_parameters": true
+    },
+    "/api/stock/{ticker}/option-chains": {
+      "category": "stock",
+      "requires_parameters": true
+    },
+    "/api/stock/{ticker}/greek-exposure": {
+      "category": "stock",
+      "requires_parameters": true
+    },
+    "/api/stock/{ticker}/flow-recent": {
+      "category": "stock",
+      "requires_parameters": true
+    },
+    "/api/option-contract/{id}/flow": {
+      "category": "option-contract",
+      "requires_parameters": true
+    },
+    "/api/institutions": {
+      "category": "institutions",
+      "requires_parameters": false
+    },
+    "/api/institution/{name}/holdings": {
+      "category": "institution",
+      "requires_parameters": true
+    },
+    "/api/congress/recent-trades": {
+      "category": "congress",
+      "requires_parameters": false
+    },
+    "/api/insider/transactions": {
+      "category": "insider",
+      "requires_parameters": false
+    },
+    "/api/darkpool/recent": {
+      "category": "darkpool",
+      "requires_parameters": false
+    },
+    "/api/etfs/{ticker}/holdings": {
+      "category": "etfs",
+      "requires_parameters": true
+    }
+  },
+  "edges": [
+    {
+      "source": "/api/market/oi-change",
+      "target": "/api/option-contract/{id}/flow",
+      "type": "direct",
+      "field_mapping": "option_symbol \u2192 id",
+      "description": "OI change provides contract IDs for detailed flow analysis"
+    },
+    {
+      "source": "/api/market/oi-change",
+      "target": "/api/stock/{ticker}/*",
+      "type": "direct",
+      "field_mapping": "underlying_symbol \u2192 ticker",
+      "description": "OI change provides tickers for stock analysis"
+    },
+    {
+      "source": "/api/screener/stocks",
+      "target": "/api/stock/{ticker}/*",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Stock screener provides tickers for detailed analysis"
+    },
+    {
+      "source": "/api/screener/option-contracts",
+      "target": "/api/option-contract/{id}/*",
+      "type": "direct",
+      "field_mapping": "contract \u2192 id",
+      "description": "Option screener provides contract IDs"
+    },
+    {
+      "source": "/api/stock/{ticker}/option-chains",
+      "target": "/api/option-contract/{id}/*",
+      "type": "direct",
+      "field_mapping": "contract \u2192 id",
+      "description": "Option chains provide contract IDs for detailed data"
+    },
+    {
+      "source": "/api/institutions",
+      "target": "/api/institution/{name}/holdings",
+      "type": "direct",
+      "field_mapping": "name \u2192 name",
+      "description": "Institution list provides names for holdings lookup"
+    },
+    {
+      "source": "/api/institution/{name}/holdings",
+      "target": "/api/stock/{ticker}/*",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Holdings provide tickers for stock analysis"
+    },
+    {
+      "source": "/api/institution/{name}/holdings",
+      "target": "/api/institution/{ticker}/ownership",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Holdings tickers show ownership details"
+    },
+    {
+      "source": "/api/stock/{ticker}/greek-exposure",
+      "target": "/api/stock/{ticker}/greek-exposure/expiry",
+      "type": "hierarchical",
+      "field_mapping": null,
+      "description": "Breakdown of GEX by expiration"
+    },
+    {
+      "source": "/api/stock/{ticker}/greek-exposure",
+      "target": "/api/stock/{ticker}/greek-exposure/strike",
+      "type": "hierarchical",
+      "field_mapping": null,
+      "description": "Breakdown of GEX by strike"
+    },
+    {
+      "source": "/api/option-trades/flow-alerts",
+      "target": "/api/stock/{ticker}/flow-alerts",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Flow alerts provide tickers for stock-specific flow"
+    },
+    {
+      "source": "/api/option-trades/flow-alerts",
+      "target": "/api/option-contract/{id}/*",
+      "type": "direct",
+      "field_mapping": "contract \u2192 id",
+      "description": "Flow alerts provide contract IDs"
+    },
+    {
+      "source": "/api/congress/recent-trades",
+      "target": "/api/stock/{ticker}/*",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Congress trades provide tickers"
+    },
+    {
+      "source": "/api/insider/transactions",
+      "target": "/api/insider/{ticker}",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Insider transactions by ticker"
+    },
+    {
+      "source": "/api/insider/transactions",
+      "target": "/api/insider/{sector}/sector-flow",
+      "type": "direct",
+      "field_mapping": "sector \u2192 sector",
+      "description": "Insider activity by sector"
+    },
+    {
+      "source": "/api/etfs/{ticker}/holdings",
+      "target": "/api/stock/{ticker}/*",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "ETF holdings provide underlying tickers"
+    },
+    {
+      "source": "/api/darkpool/recent",
+      "target": "/api/darkpool/{ticker}",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Recent darkpool trades by ticker"
+    },
+    {
+      "source": "/api/option-contract/{id}/historic",
+      "target": "/api/option-contract/{id}/intraday",
+      "type": "time_series",
+      "field_mapping": null,
+      "description": "Daily vs 1-min granularity"
+    },
+    {
+      "source": "/api/option-contract/{id}/intraday",
+      "target": "/api/option-contract/{id}/flow",
+      "type": "time_series",
+      "field_mapping": null,
+      "description": "1-min intervals vs real-time trades"
+    },
+    {
+      "source": "/api/market/market-tide",
+      "target": "/api/stock/{ticker}/flow-recent",
+      "type": "aggregation",
+      "field_mapping": null,
+      "description": "Market tide aggregates ticker-level flow"
+    },
+    {
+      "source": "/api/market/sector-etfs",
+      "target": "/api/market/{ticker}/etf-tide",
+      "type": "direct",
+      "field_mapping": "ticker \u2192 ticker",
+      "description": "Sector ETFs to ETF-specific tide"
+    },
+    {
+      "source": "/api/stock/{ticker}/max-pain",
+      "target": "/api/stock/{ticker}/nope",
+      "type": "implicit",
+      "field_mapping": null,
+      "description": "Related options metrics for same ticker"
+    },
+    {
+      "source": "/api/stock/{ticker}/volatility/realized",
+      "target": "/api/stock/{ticker}/iv-rank",
+      "type": "implicit",
+      "field_mapping": null,
+      "description": "Related volatility metrics"
+    }
+  ],
+  "relationship_types": {
+    "direct": "Field from source is parameter in target",
+    "hierarchical": "Target is a breakdown/subset of source",
+    "aggregation": "Source aggregates multiple targets",
+    "time_series": "Same data at different time granularities",
+    "implicit": "Contextually related without direct field mapping"
+  },
+  "statistics": {
+    "direct_relationships": 16,
+    "hierarchical_relationships": 2,
+    "aggregation_relationships": 1,
+    "time_series_relationships": 2,
+    "implicit_relationships": 2
+  }
+}
