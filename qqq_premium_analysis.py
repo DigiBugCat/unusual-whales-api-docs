@@ -9,6 +9,7 @@ import requests
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 import json
+import time
 
 # API Configuration
 BASE_URL = "https://api.unusualwhales.com/api"
@@ -20,64 +21,153 @@ class QQQOptionsAnalyzer:
         self.headers = {"Authorization": f"Bearer {api_key}"}
         self.ticker = "QQQ"
 
-    def get_current_price(self) -> Optional[float]:
-        """Get current QQQ stock price"""
-        try:
-            url = f"{BASE_URL}/stock/{self.ticker}/info"
-            response = requests.get(url, headers=self.headers)
-            response.raise_for_status()
-            data = response.json()
-            price = data.get('data', {}).get('last_price')
-            if not price:
-                # Fallback to other price fields
-                price = data.get('data', {}).get('close', data.get('data', {}).get('price'))
-            print(f"✓ Current QQQ Price: ${price:.2f}")
-            return float(price)
-        except Exception as e:
-            print(f"✗ Error fetching QQQ price: {e}")
-            return None
+    def api_request_with_retry(self, url: str, params: dict = None, max_retries: int = 3) -> Optional[dict]:
+        """Make API request with retry logic for rate limiting"""
+        for attempt in range(max_retries):
+            try:
+                if attempt > 0:
+                    wait_time = 2 ** attempt  # Exponential backoff
+                    print(f"  Retrying in {wait_time}s... (attempt {attempt + 1}/{max_retries})")
+                    time.sleep(wait_time)
 
-    def get_options_chain(self, min_dte: int = 1, max_dte: int = 4) -> List[Dict]:
-        """Get options chain filtered by DTE"""
+                response = requests.get(url, headers=self.headers, params=params, timeout=30)
+                response.raise_for_status()
+                return response.json()
+
+            except requests.exceptions.HTTPError as e:
+                if e.response.status_code in [429, 503]:  # Rate limit or service unavailable
+                    if attempt < max_retries - 1:
+                        continue
+                raise
+            except requests.exceptions.Timeout:
+                if attempt < max_retries - 1:
+                    continue
+                raise
+
+        return None
+
+    def get_options_chain(self, min_dte: int = 1, max_dte: int = 4) -> tuple[List[Dict], Optional[float]]:
+        """Get options chain filtered by DTE and extract current price"""
         try:
-            url = f"{BASE_URL}/screener/option-contracts"
+            # Use the simpler option-contracts endpoint with minimal parameters
+            url = f"{BASE_URL}/stock/{self.ticker}/option-contracts"
             params = {
-                'ticker_symbol': self.ticker,
-                'min_dte': min_dte,
-                'max_dte': max_dte,
-                'is_otm': 'true',
-                'min_volume': 10,  # Filter out low volume options
-                'limit': 500
+                'limit': 200  # Smaller limit to reduce load
             }
 
-            print(f"\n📊 Fetching options with {min_dte}-{max_dte} DTE...")
-            response = requests.get(url, headers=self.headers, params=params)
-            response.raise_for_status()
-            data = response.json()
+            print(f"\n📊 Fetching {self.ticker} options contracts...")
+            data = self.api_request_with_retry(url, params)
 
-            contracts = data.get('data', [])
-            print(f"✓ Found {len(contracts)} OTM contracts")
-            return contracts
+            all_contracts = data.get('data', [])
+            print(f"✓ Found {len(all_contracts)} option contracts")
+
+            # Filter by DTE manually by parsing option symbols
+            # Option symbol format: TICKER + YYMMDD + C/P + STRIKE (e.g., QQQ251107P00600000)
+            from datetime import datetime, timedelta
+            today = datetime.now().date()
+
+            # Debug: collect all DTEs to see what's available
+            dte_counts = {}
+            contracts = []
+
+            for contract in all_contracts:
+                symbol = contract.get('option_symbol', '')
+                if not symbol or len(symbol) < 15:
+                    continue
+
+                try:
+                    # Extract date from symbol (YYMMDD format after ticker)
+                    # For QQQ (3 chars): positions 3-9 contain YYMMDD
+                    ticker_len = len(self.ticker)
+                    date_str = symbol[ticker_len:ticker_len+6]
+                    option_type = symbol[ticker_len+6]  # C or P
+
+                    # Parse date
+                    expiry = datetime.strptime(date_str, '%y%m%d').date()
+                    dte = (expiry - today).days
+
+                    # Extract strike (remaining digits / 1000)
+                    strike_str = symbol[ticker_len+7:]
+                    strike = float(strike_str) / 1000
+
+                    # Add parsed data to contract
+                    contract['dte'] = dte
+                    contract['expiration_date'] = expiry.strftime('%Y-%m-%d')
+                    contract['option_type'] = 'call' if option_type == 'C' else 'put'
+                    contract['strike'] = strike
+
+                    # Count DTEs for debugging
+                    dte_counts[dte] = dte_counts.get(dte, 0) + 1
+
+                    if min_dte <= dte <= max_dte:
+                        contracts.append(contract)
+                except Exception as e:
+                    # Skip contracts we can't parse
+                    continue
+
+            # Show available DTEs
+            if dte_counts:
+                sorted_dtes = sorted(dte_counts.keys())[:10]  # First 10 DTEs
+                print(f"Debug - Available DTEs: {sorted_dtes}")
+
+            print(f"✓ Filtered to {len(contracts)} contracts with {min_dte}-{max_dte} DTE")
+
+            # Estimate current price from ATM strikes
+            current_price = None
+            if contracts and len(contracts) > 0:
+                # Try to find stock_price field first
+                for contract in contracts[:10]:  # Check first 10
+                    if 'stock_price' in contract:
+                        current_price = float(contract['stock_price'])
+                        print(f"✓ Current QQQ Price: ${current_price:.2f} (from contract data)")
+                        break
+
+                # If not found, estimate from ATM strikes (most volume/OI near current price)
+                if not current_price:
+                    strikes = [c.get('strike', 0) for c in contracts if c.get('strike')]
+                    if strikes:
+                        current_price = sum(strikes) / len(strikes)  # Average of strikes as approximation
+                        print(f"✓ Estimated QQQ Price: ~${current_price:.2f} (from ATM strikes)")
+
+            return contracts, current_price
 
         except Exception as e:
             print(f"✗ Error fetching options chain: {e}")
-            return []
+            import traceback
+            traceback.print_exc()
+            return [], None
 
     def filter_by_strike_distance(self, contracts: List[Dict], current_price: float,
                                    target_otm: float = 5.0, tolerance: float = 2.0) -> List[Dict]:
         """Filter contracts to those approximately $5 OTM"""
         filtered = []
 
+        # Debug: print first few strikes to see what we're working with
+        if contracts:
+            print(f"\nDebug - Current price: ${current_price:.2f}")
+            print(f"Debug - First 5 contracts:")
+            for i, c in enumerate(contracts[:5]):
+                strike = c.get('strike', 'missing')
+                opt_type = c.get('option_type', 'missing')
+                symbol = c.get('option_symbol', 'missing')
+                print(f"  {i+1}. {symbol} - Strike: {strike}, Type: {opt_type}")
+
         for contract in contracts:
-            strike = float(contract.get('strike', 0))
+            strike_raw = contract.get('strike')
+            if strike_raw is None:
+                continue
+
+            strike = float(strike_raw)
             option_type = contract.get('option_type', '').lower()
 
             if option_type == 'call':
                 # For calls, OTM means strike > current price
                 distance = strike - current_price
-            else:  # put
+            elif option_type == 'put':
                 # For puts, OTM means strike < current price
                 distance = current_price - strike
+            else:
+                continue
 
             # Check if within tolerance of target OTM distance
             if abs(distance - target_otm) <= tolerance:
@@ -93,11 +183,11 @@ class QQQOptionsAnalyzer:
             url = f"{BASE_URL}/option-contract/{contract_symbol}/historic"
             params = {'limit': days}
 
-            response = requests.get(url, headers=self.headers, params=params)
-            response.raise_for_status()
-            data = response.json()
-
-            return data.get('data', [])
+            data = self.api_request_with_retry(url, params, max_retries=2)
+            if data:
+                # Historical data is under 'chains' not 'data'
+                return data.get('chains', data.get('data', []))
+            return None
 
         except Exception as e:
             # Don't print error for each contract to avoid spam
@@ -108,16 +198,24 @@ class QQQOptionsAnalyzer:
         results = []
 
         print(f"\n📈 Analyzing premium changes over last 7 days...")
+        print(f"Checking {len(contracts)} contracts for historical data...")
         print("=" * 80)
 
-        for contract in contracts:
+        successful_fetches = 0
+        for i, contract in enumerate(contracts):
             symbol = contract.get('option_symbol', '')
             if not symbol:
                 continue
 
-            history = self.get_contract_history(symbol, days=7)
+            # Show progress every 5 contracts
+            if (i + 1) % 5 == 0:
+                print(f"  Progress: {i+1}/{len(contracts)} contracts checked, {successful_fetches} with data...")
+
+            history = self.get_contract_history(symbol, days=10)  # Try 10 days for more data
             if not history or len(history) < 2:
                 continue
+
+            successful_fetches += 1
 
             # Sort by date
             history.sort(key=lambda x: x.get('date', ''))
@@ -126,8 +224,9 @@ class QQQOptionsAnalyzer:
             current_data = history[-1]
             week_ago_data = history[0]
 
-            current_price = float(current_data.get('close', 0))
-            week_ago_price = float(week_ago_data.get('close', 0))
+            # Historical data uses 'last_price' not 'close'
+            current_price = float(current_data.get('last_price', current_data.get('avg_price', 0)))
+            week_ago_price = float(week_ago_data.get('last_price', week_ago_data.get('avg_price', 0)))
 
             if week_ago_price == 0:
                 continue
@@ -243,22 +342,21 @@ class QQQOptionsAnalyzer:
         print("🐋 QQQ Options Premium Analysis")
         print("=" * 80)
 
-        # Get current price
-        current_price = self.get_current_price()
-        if not current_price:
-            return
-
-        # Get options chain
-        contracts = self.get_options_chain(min_dte=1, max_dte=4)
-        if not contracts:
+        # Get options chain and current price
+        # Using 5-14 DTE to ensure contracts have sufficient historical data
+        print("Note: Using 5-14 DTE for better historical data availability")
+        contracts, current_price = self.get_options_chain(min_dte=5, max_dte=14)
+        if not contracts or not current_price:
+            print("⚠️  Unable to fetch options data or current price")
             return
 
         # Filter by strike distance (~$5 OTM)
+        # For QQQ at ~$600, we'll use a wider tolerance to capture more strikes
         filtered_contracts = self.filter_by_strike_distance(
             contracts,
             current_price,
             target_otm=5.0,
-            tolerance=2.0
+            tolerance=5.0  # Wider tolerance to capture strikes from $0-10 OTM
         )
 
         if not filtered_contracts:
